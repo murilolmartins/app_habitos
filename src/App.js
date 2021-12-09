@@ -1,5 +1,4 @@
 import "./App.css";
-
 import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,10 +17,8 @@ function App() {
         draggable
         pauseOnHover
       />
-      <ToastContainer />
       <div className="App-Container">
         <Routes></Routes>
-  
       </div>
     </div>
   );

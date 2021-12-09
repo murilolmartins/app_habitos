@@ -3,9 +3,15 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  box-shadow: 0px -13px 27px 9px lightblue;
   div {
-    display: flex;
-    justify-content: space-evenly;
+    display: none;
+    @media (min-width: 760px) {
+      display: flex;
+      justify-content: space-evenly;
+    }
     a {
       margin: 50px;
       text-decoration: none;
@@ -28,14 +34,9 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  @media screen and (max-width: 760) {
-    div a {
-      display: none;
-    }
-  }
   @media screen and (max-width: 420px) {
     figure img {
-      width: 317px;
+      width: 250px;
     }
   }
 `;
