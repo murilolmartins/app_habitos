@@ -6,7 +6,9 @@ const Container = styled.footer`
     padding: 0px;
     box-sizing: border-box;
   }
-  width: 400px;
+  width: 100%;
+  min-width: 320px;
+  max-width: 600px;
   height: 70px;
   background-color: #f2a167;
   display: flex;
@@ -16,9 +18,12 @@ const Container = styled.footer`
   position: relative;
   ul {
     display: flex;
-    width: 350px;
+    width: 320px;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: 430px) {
+      width: 430px;
+    }
     .active .box_icon .icon {
       transform: translateY(-35px);
     }
@@ -32,16 +37,28 @@ const Container = styled.footer`
       height: 70px;
       z-index: 1;
       :nth-child(1).active ~ .indicator {
-        transform: translateX(calc(70px * 0));
+        transform: translateX(calc(50px * 0));
+        @media (min-width: 430px) {
+          transform: translateX(calc(50px * 0));
+        }
       }
       :nth-child(2).active ~ .indicator {
-        transform: translateX(calc(92px * 1));
+        transform: translateX(calc(83px * 1));
+        @media (min-width: 430px) {
+          transform: translateX(calc(120px * 1));
+        }
       }
       :nth-child(3).active ~ .indicator {
-        transform: translateX(calc(95px * 2));
+        transform: translateX(calc(85px * 2));
+        @media (min-width: 430px) {
+          transform: translateX(calc(122px * 2));
+        }
       }
       :nth-child(4).active ~ .indicator {
-        transform: translateX(calc(92px * 3));
+        transform: translateX(calc(82px * 3));
+        @media (min-width: 430px) {
+          transform: translateX(calc(119px * 3));
+        }
       }
       .box_icon {
         position: relative;
@@ -63,6 +80,7 @@ const Container = styled.footer`
           position: absolute;
           color: black;
           font-weight: 0.75em;
+          font-size: 14px;
           letter-spacing: 0.05em;
           transition: 0.5s;
           opacity: 0;
@@ -79,6 +97,28 @@ const Container = styled.footer`
       border-radius: 50%;
       border: 6px solid white;
       transition: 0.5s;
+    }
+    .indicator::after {
+      content: "";
+      position: absolute;
+      top: 62%;
+      right: -19px;
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      border-top-left-radius: 24px;
+      box-shadow: 0px -11px 0px 0px white;
+    }
+    .indicator::before {
+      content: "";
+      position: absolute;
+      top: 62%;
+      left: -19px;
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      border-top-right-radius: 24px;
+      box-shadow: 0px -11px 0px 0px white;
     }
   }
 `;
