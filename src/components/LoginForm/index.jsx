@@ -1,4 +1,6 @@
-import {Container,Form,Title,Input,Button} from './styles';
+import Button from './../Button';
+import Input from './../Input';
+import {Container,Form,Title} from './styles';
 const LoginForm = ()=>{
   return (
     <Container>

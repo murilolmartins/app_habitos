@@ -1,4 +1,5 @@
 import styled,{keyframes} from 'styled-components';
+
 export const slideToLeft = keyframes`
   from{
     transform:translateX(100px);
@@ -31,38 +32,4 @@ export const Form = styled.form`
   align-items:center;
   justify-content: space-between;
   height:160px;
-`;
-export const Input = styled.input`
-  font-family:'Overpass';
-  width:280px;
-  height:40px;
-  background: #c7eadf;
-  border:none;
-  border-radius: 12px;
-  padding-left:28px;
-  font-size:16px;
-  ::placeholder{
-    color: #8A8484;
-    font-weight:700;
-  }
-  :focus{
-    outline:2px solid black;
-  }
-  @media (min-width:768px){
-    width:400px;
-  }
-`;
-export const Button = styled.button`
-  font-family:'Overpass';
-  width:180px;
-  height:40px;
-  font-size:20px;
-  background: #F2A167;
-  border-radius:10px;
-  border:none;
-  cursor:pointer;
-  color: #FFFDFD;
-  :hover{
-    filter:brightness(0.7);
-  }
 `;
