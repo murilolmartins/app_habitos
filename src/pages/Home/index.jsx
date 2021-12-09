@@ -14,7 +14,7 @@ function Home() {
           <Wellcome></Wellcome>
         </Content>
       </SmallContainer>
-      <MobileFooter></MobileFooter>
+      <MobileFooter name="home"></MobileFooter>
     </Container>
   );
 }
