@@ -1,11 +1,11 @@
 import "./App.css";
-import RegisterForm from "./components/RegisterForm";
+import Routes from "./routes";
 
 function App() {
   return (
     <div className="App">
       <div className="App-Container">
-        <RegisterForm />
+        <Routes />
       </div>
     </div>
   );
