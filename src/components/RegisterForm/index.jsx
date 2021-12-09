@@ -10,14 +10,14 @@ export default function RegisterForm() {
       .string()
       .required("Nome de usuário obrigatório")
       .matches(
-        "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$",
-        "O nome deve conter somente letras"
+        "^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$",
+        "O nome deve conter letras, e pode conter hífen"
       ),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup
       .string()
       .matches(
-        "(?=^.{8,}$)((?=.*d)(?=.*W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+        "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})",
         "A senha deve conter pelo menos 8 caracteres, letra maiúscula e minúscula, número, caracter especial."
       )
       .required("Senha obrigatória"),
