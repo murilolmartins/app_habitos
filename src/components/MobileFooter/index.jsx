@@ -3,8 +3,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import { useHistory } from "react-router";
 
-const MobileFooter = () => {
+const MobileFooter = ({ name }) => {
+  const history = useHistory();
   const onView = (e) => {
     const item = document.querySelector(".active");
     item.classList.remove("active");
@@ -13,7 +15,13 @@ const MobileFooter = () => {
   return (
     <Container>
       <ul>
-        <li className="active" onClick={(e) => onView(e)}>
+        <li
+          className={name === "home" && "active"}
+          onClick={(e) => {
+            onView(e);
+            history.push("/");
+          }}
+        >
           <div className="box_icon">
             <span className="icon">
               <HomeIcon fontSize="large"></HomeIcon>
@@ -21,7 +29,13 @@ const MobileFooter = () => {
             <span className="text">Home</span>
           </div>
         </li>
-        <li onClick={(e) => onView(e)}>
+        <li
+          className={name === "aboutUs" && "active"}
+          onClick={(e) => {
+            onView(e);
+            // history.push("/aboutUs");
+          }}
+        >
           <div className="box_icon">
             <span className="icon">
               <HelpIcon fontSize="large"></HelpIcon>
@@ -29,7 +43,13 @@ const MobileFooter = () => {
             <span className="text">Sobre Nós</span>
           </div>
         </li>
-        <li onClick={(e) => onView(e)}>
+        <li
+          className={name === "login" && "active"}
+          onClick={(e) => {
+            history.push("/login");
+            onView(e);
+          }}
+        >
           <div className="box_icon">
             <span className="icon">
               <LoginIcon fontSize="large"></LoginIcon>
@@ -37,7 +57,10 @@ const MobileFooter = () => {
             <span className="text">Login</span>
           </div>
         </li>
-        <li onClick={(e) => onView(e)}>
+        <li
+          className={name === "singUp" && "active"}
+          onClick={(e) => onView(e)}
+        >
           <div className="box_icon">
             <span className="icon">
               <PersonAddAlt1Icon fontSize="large"></PersonAddAlt1Icon>
