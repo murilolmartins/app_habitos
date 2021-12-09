@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
@@ -11,14 +11,15 @@ const AuthProvider = ({ children }) => {
 
   const authentication = (data) => {
     api
-      .post("sessions/")
+      .post("sessions/", data)
       .then((response) => {
-        localStorage.setItem(JSON.stringify("@AppToken", response.data.access));
+        localStorage.setItem("@AppToken", JSON.stringify(response.data.access));
         setToken(JSON.parse(localStorage.getItem("@AppToken")));
         toast.success("Bem Vindo!");
       })
       .catch((err) => {
         toast.error("Usuario ou senha incorretos!");
+        console.log(err);
       });
   };
   return (

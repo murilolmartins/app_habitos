@@ -14,6 +14,8 @@ export const SmallContainer = styled.div`
   align-items: center;
   width: 100%;
   flex-grow: 1;
+  width: 100%;
+  max-width: 1200px;
   .background_img {
     display: none;
     width: 50%;
