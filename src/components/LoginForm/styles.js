@@ -11,12 +11,12 @@ export const slideToLeft = keyframes`
   }
 `;
 export const Container = styled.div`
-  /* font-family:'Overpass'; */
+
   display:flex;
   flex-flow:column;
   justify-content:space-between;
   height:260px;
-  animation: ${slideToLeft} 2s ease-in-out;
+  animation: ${slideToLeft} 1s ease-in-out;
 `;
 export const Title = styled.h2`
   font-family:'Overpass';
@@ -26,10 +26,20 @@ export const Title = styled.h2`
   
 `;
 export const Form = styled.form`
-  /* font-family:'Overpass'; */
+ 
+  position:relative;
   display:flex;
   flex-flow:column;
   align-items:center;
   justify-content: space-between;
   height:160px;
+`;
+export const Errors = styled.span`
+  color:#f95959;
+ 
+  position:absolute;
+  top:${props=>props.password?'50px':'-10px'};
+  @media (min-width:768px){
+    align-self:flex-start;
+  }
 `;
