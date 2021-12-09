@@ -22,8 +22,8 @@ const LoginForm = () => {
     <Container>
       <Title>Entrar com uma conta existente</Title>
       <Form onsubmit={handleSubmit(handleForm)}>
-        <Input type="text" placeholder="Email" {...register("email")} />
-        <Input type="text" placeholder="Senha" {...register("password")} />
+        <Input type="text" placeholder="Email" register={register} name='email' />
+        <Input type="text" placeholder="Senha" register={register} name='password' />
         <Button type="submit">Entrar</Button>
       </Form>
     </Container>

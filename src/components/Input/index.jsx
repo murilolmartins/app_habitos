@@ -1,5 +1,5 @@
 import Container from "./styles";
-const Input = ({type,placeholder}) => {
-  return <Container type={type} placeholder={placeholder}/>;
+const Input = ({register,name,...rest}) => {
+  return <Container {...rest} {...register(name)}/>;
 };
 export default Input;
