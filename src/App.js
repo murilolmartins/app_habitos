@@ -18,7 +18,9 @@ function App() {
         pauseOnHover
       />
       <div className="App-Container">
-        <Routes></Routes>
+
+        <Routes />
+
       </div>
     </div>
   );
