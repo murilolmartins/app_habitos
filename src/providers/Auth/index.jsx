@@ -19,11 +19,19 @@ const AuthProvider = ({ children }) => {
       })
       .catch((err) => {
         toast.error("Usuario ou senha incorretos!");
-        console.log(err);
+        
+      });
+  };
+  const signUpRequisition = (data)=>{
+    api.post('users/',data).then(response=>{
+      toast.success('Login liberado!');
+      
+    }).catch(err=>{
+      toast.error('Usuário já existente!');
       });
   };
   return (
-    <AuthContext.Provider value={{ token, authentication }}>
+    <AuthContext.Provider value={{ token, authentication, signUpRequisition }}>
       {children}
     </AuthContext.Provider>
   );
