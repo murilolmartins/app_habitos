@@ -27,14 +27,14 @@ const LoginForm = () => {
       <Form onSubmit={handleSubmit(authentication)}>
         <Input
           type="text"
-          placeholder="Usuario"
+          placeholder="Usuario*"
           register={register}
           name="username"
         />
         <Errors>{errors.username?.message}</Errors>
         <Input
           type="password"
-          placeholder="Senha"
+          placeholder="Senha*"
           register={register}
           name="password"
         />

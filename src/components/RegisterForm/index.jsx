@@ -42,7 +42,7 @@ export default function RegisterForm() {
             register={register}
             name="username"
           />
-          <Errors > {errors.username && errors.username.message} </Errors>
+          <Errors> {errors.username && errors.username.message} </Errors>
         </ContainerInput>
         <ContainerInput>
           <Input
@@ -50,11 +50,16 @@ export default function RegisterForm() {
             register={register}
             name="email"
           />
-          <Errors >{errors.email && errors.email.message} </Errors>
+          <Errors>{errors.email && errors.email.message} </Errors>
         </ContainerInput>
         <ContainerInput>
-          <Input placeholder="Senha*" register={register} name="password" />
-          <Errors > {errors.password && errors.password.message} </Errors>
+          <Input
+            placeholder="Senha*"
+            register={register}
+            name="password"
+            type="password"
+          />
+          <Errors> {errors.password && errors.password.message} </Errors>
         </ContainerInput>
         <Button type="submit"> Enviar </Button>
       </Form>

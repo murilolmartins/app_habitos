@@ -11,7 +11,7 @@ const DesktopHeader = () => {
         <Link to="/">Home</Link>
         <Link to="/aboutUs">About</Link>
         <Link to="/login">Login</Link>
-        <Link to="/signup">Register</Link>
+        <Link to="/singup">Register</Link>
       </div>
     </Container>
   );

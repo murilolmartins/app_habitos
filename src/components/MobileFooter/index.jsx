@@ -16,7 +16,7 @@ const MobileFooter = ({ name }) => {
     <Container>
       <ul>
         <li
-          className={name === "home" ? "home":"active"}
+          className={name === "home" ? "active" : "home"}
           onClick={(e) => {
             onView(e);
             history.push("/");
@@ -30,7 +30,7 @@ const MobileFooter = ({ name }) => {
           </div>
         </li>
         <li
-          className={name === "aboutUs" ? "aboutUs":"active"}
+          className={name === "aboutUs" ? "active" : "aboutUs"}
           onClick={(e) => {
             onView(e);
             // history.push("/aboutUs");
@@ -44,7 +44,7 @@ const MobileFooter = ({ name }) => {
           </div>
         </li>
         <li
-          className={name === "login" ? "login" :"active"}
+          className={name === "login" ? "active" : "login"}
           onClick={(e) => {
             history.push("/login");
             onView(e);
@@ -58,8 +58,11 @@ const MobileFooter = ({ name }) => {
           </div>
         </li>
         <li
-          className={name === "singUp" ? "signUp":"active"}
-          onClick={(e) => onView(e)}
+          className={name === "singUp" ? "active" : "singUp"}
+          onClick={(e) => {
+            history.push("/singup");
+            onView(e);
+          }}
         >
           <div className="box_icon">
             <span className="icon">
