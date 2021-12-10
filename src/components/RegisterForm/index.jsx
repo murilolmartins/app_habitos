@@ -2,26 +2,27 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import React from "react";
-import { InputErros, ContainerRegister } from "./style.js";
-import Input from "../Input/styles.js";
-import Container from "../Button/styles.js";
-
+import { InputErros, ContainerRegister, ContainerInput } from "./style.js";
+import { Title, Form, Errors } from "./../LoginForm/styles";
+import Input from "../Input/index";
+import Button from "../Button/index";
+import { useContext } from "react";
+import { AuthContext } from "./../../providers/Auth/index";
 export default function RegisterForm() {
+  const { signUpRequisition } = useContext(AuthContext);
   const formSchema = yup.object().shape({
     username: yup
       .string()
       .required("Nome de usuário obrigatório")
-      .matches(
-        "^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$",
-        "O nome deve conter letras, e pode conter hífen"
-      ),
+      .matches(/^[a-zA-Z\s]*$/gi, "Nome deve conter apenas letras"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup
       .string()
-      .matches(
-        "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})",
-        "A senha deve conter pelo menos 8 caracteres, letra maiúscula e minúscula, número, caracter especial."
-      )
+      .min(8, "Mínimo de 8 dígitos")
+      .matches(/[a-z]/g, "Mínimo um dígito minúsculo")
+      .matches(/[A-Z]/g, "Mínimo um digito maiúsculo")
+      .matches(/[0-9]/g, "Mínimo um número")
+      .matches(/[$@$!%*#?&´^~/><+=[\]{",;°§`º_().}\\¨-]/g, "Mínimo um símbolo")
       .required("Senha obrigatória"),
   });
   const {
@@ -32,19 +33,31 @@ export default function RegisterForm() {
 
   return (
     <ContainerRegister>
-      <form onSubmit={handleSubmit()} className="form-container">
-        <Input
-          onChange={(e) => console.log(e.target.value)}
-          placeholder="Nome de usuário*"
-          {...register("username")}
-        />
-        <InputErros> {errors.username && errors.username.message} </InputErros>
-        <Input placeholder="Endereço de email*" {...register("email")} />
-        <InputErros>{errors.email && errors.email.message} </InputErros>
-        <Input placeholder="Senha*" {...register("password")} />
-        <InputErros> {errors.password && errors.password.message} </InputErros>
-      </form>
-      <Container type="submit"> Enviar </Container>
+      <Title>Criar uma nova conta</Title>
+      <Form onSubmit={handleSubmit(signUpRequisition)}>
+        <ContainerInput>
+          <Input
+            onChange={(e) => console.log(e.target.value)}
+            placeholder="Nome de usuário*"
+            register={register}
+            name="username"
+          />
+          <Errors > {errors.username && errors.username.message} </Errors>
+        </ContainerInput>
+        <ContainerInput>
+          <Input
+            placeholder="Endereço de email*"
+            register={register}
+            name="email"
+          />
+          <Errors >{errors.email && errors.email.message} </Errors>
+        </ContainerInput>
+        <ContainerInput>
+          <Input placeholder="Senha*" register={register} name="password" />
+          <Errors > {errors.password && errors.password.message} </Errors>
+        </ContainerInput>
+        <Button type="submit"> Enviar </Button>
+      </Form>
     </ContainerRegister>
   );
 }

@@ -32,13 +32,13 @@ export const Form = styled.form`
   flex-flow:column;
   align-items:center;
   justify-content: space-between;
-  height:160px;
+  height:250px;
 `;
 export const Errors = styled.span`
   color:#f95959;
- 
   position:absolute;
-  top:${props=>props.password?'50px':'-10px'};
+  left:0;
+  top:${props=>props.password?'55px':'-10px'};
   @media (min-width:768px){
     align-self:flex-start;
   }
