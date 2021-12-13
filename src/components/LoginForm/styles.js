@@ -1,4 +1,4 @@
-import styled,{keyframes} from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 export const slideToLeft = keyframes`
   from{
@@ -11,35 +11,32 @@ export const slideToLeft = keyframes`
   }
 `;
 export const Container = styled.div`
-
-  display:flex;
-  flex-flow:column;
-  justify-content:space-between;
-  height:260px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 260px;
   animation: ${slideToLeft} 1s ease-in-out;
 `;
 export const Title = styled.h2`
-  font-family:'Overpass';
-  color:#F2A167;
+  font-family: "Overpass";
+  color: #f2a167;
   font-size: 28px;
   text-align: center;
-  
 `;
 export const Form = styled.form`
- 
-  position:relative;
-  display:flex;
-  flex-flow:column;
-  align-items:center;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   justify-content: space-between;
-  height:250px;
+  height: 250px;
 `;
 export const Errors = styled.span`
-  color:#f95959;
-  position:absolute;
-  left:0;
-  top:${props=>props.password?'55px':'-10px'};
-  @media (min-width:768px){
-    align-self:flex-start;
+  color: #f95959;
+  position: absolute;
+  left: 0;
+  top: ${(props) => (props.password ? "55px" : "-10px")};
+  @media (min-width: 768px) {
+    align-self: flex-start;
   }
 `;
