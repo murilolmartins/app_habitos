@@ -10,8 +10,8 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const id = jwt_decode(token).user_id;
-    loadUser(id);
+    // const id = jwt_decode(token).user_id;
+    // loadUser(id);
   }, [token]);
 
   const loadUser = (id) => {
