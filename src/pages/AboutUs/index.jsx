@@ -53,6 +53,7 @@ const AboutUs = () => {
       <Content>
         {staff.map((staff) => (
           <StaffCard
+            key={staff.name}
             name={staff.name}
             img={staff.img}
             job={staff.job}
