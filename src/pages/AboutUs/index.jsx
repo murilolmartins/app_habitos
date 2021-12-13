@@ -2,6 +2,7 @@ import Mat from "../../assets/images/staffimgs/Mateus.png";
 import Bea from "../../assets/images/staffimgs/Beatriz.png";
 import Mic from "../../assets/images/staffimgs/Micael.png";
 import Mur from "../../assets/images/staffimgs/Murilo.png";
+import Die from "../../assets/images/staffimgs/Diego.png";
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
 import StaffCard from "../../components/StaffCard";
@@ -13,10 +14,11 @@ const AboutUs = () => {
       name: "About Us",
       job: "We are a team from Kenzie Academy, and together with focus and hard work we build amazing thigs, like this app, if you want know more about the team members click in the cards",
       img: "",
+      link: "",
     },
     {
       name: "Diego Paixao",
-      img: "",
+      img: `${Die}`,
       job: "PO",
       link: "https://www.linkedin.com/in/diego-h-paix%C3%A3o-sousa-249214215/",
     },
