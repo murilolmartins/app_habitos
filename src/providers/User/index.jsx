@@ -8,10 +8,12 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const { token } = useContext(AuthContext);
   const [user, setUser] = useState({});
+  const [id, setId] = useState(0);
 
   useEffect(() => {
-    const id = jwt_decode(token).user_id;
-    loadUser(id);
+    const idUser = jwt_decode(token).user_id;
+    setId(idUser);
+    loadUser(idUser);
   }, [token]);
 
   const loadUser = (id) => {
@@ -24,7 +26,7 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, id }}>{children}</UserContext.Provider>
   );
 };
 

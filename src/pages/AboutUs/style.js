@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: flex-start;
   height: 100vh;
   width: 100%;
+  max-width: 1150px;
 `;
 
 export const Content = styled.div`

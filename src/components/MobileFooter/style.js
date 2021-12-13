@@ -96,7 +96,7 @@ const Container = styled.footer`
       top: -60%;
       width: 70px;
       height: 70px;
-      background-color: lightblue;
+      background-color: white;
       border-radius: 50%;
       border: 6px solid white;
       transition: 0.5s;
@@ -110,7 +110,7 @@ const Container = styled.footer`
       height: 20px;
       background-color: transparent;
       border-top-left-radius: 24px;
-      box-shadow: 0px -11px 0px 0px white;
+      box-shadow: 0px -11px 0px 0px transparent;
     }
     .indicator::before {
       content: "";
@@ -121,7 +121,7 @@ const Container = styled.footer`
       height: 20px;
       background-color: transparent;
       border-top-right-radius: 24px;
-      box-shadow: 0px -11px 0px 0px white;
+      box-shadow: 0px -11px 0px 0px transparent;
     }
   }
 `;
