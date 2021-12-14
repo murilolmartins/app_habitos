@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: 270px;
   height: 372px;
   background-color: #ebd2ad;
+  padding:20px;
   a img {
     width: 250px;
     border-radius: 50%;
