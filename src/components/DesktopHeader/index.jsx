@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Container } from "./style";
 import logo from "../../assets/images/logo-ukifazer.png";
-import logout from './../../assets/images/Logout.png';
-import {useContext} from 'react';
-import {AuthContext} from './../../providers/Auth/index';
+import logout from "./../../assets/images/Logout.png";
+import { useContext } from "react";
+import { AuthContext } from "./../../providers/Auth/index";
+import { UserContext } from "../../providers/User";
 const DesktopHeader = ({ isDashBoard = false }) => {
-  const {handleLogOut} = useContext(AuthContext);
+  const { handleLogOut } = useContext(AuthContext);
+  const { user } = useContext(UserContext);
   return (
     <>
       {" "}
@@ -17,10 +19,12 @@ const DesktopHeader = ({ isDashBoard = false }) => {
           <div className="links">
             <Link to="/habits">Hábitos</Link>
             <Link to="/groups">Grupos</Link>
-            <Link to="/goals">Objetivos</Link>
-            <Link to="/activities">Atividades</Link>
-            <Link to="/profile">Perfil</Link>
-            <img onClick = {()=>handleLogOut()} src={logout} alt=""/>
+            <div className="description">
+              <h2>{user.username}</h2>
+              <p>{user.email}</p>
+              <span>editar</span>
+            </div>
+            <img onClick={() => handleLogOut()} src={logout} alt="" />
           </div>
         </Container>
       ) : (
@@ -34,11 +38,11 @@ const DesktopHeader = ({ isDashBoard = false }) => {
             <Link to="/login">Login</Link>
             <Link to="/singup">Register</Link>
           </div>
-          {isDashBoard&&
-          <figure>
-            <img src={logout} alt="Logo" />
-          </figure>}
-          
+          {isDashBoard && (
+            <figure>
+              <img src={logout} alt="Logo" />
+            </figure>
+          )}
         </Container>
       )}
     </>

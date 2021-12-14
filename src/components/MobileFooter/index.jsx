@@ -3,14 +3,16 @@ import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import LoginIcon from "@mui/icons-material/Login";
 import GroupsIcon from "@mui/icons-material/Groups";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useHistory } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/Auth";
 
 const MobileFooter = ({ name, isDashboard = false }) => {
   const history = useHistory();
+  const { handleLogOut } = useContext(AuthContext);
   const onView = (e) => {
     const item = document.querySelector(".active");
     item.classList.remove("active");
@@ -53,32 +55,30 @@ const MobileFooter = ({ name, isDashboard = false }) => {
             <li
               className={name === "goals" ? "active" : "goals"}
               onClick={(e) => {
-                history.push("/goals");
                 onView(e);
               }}
             >
               <div className="box_icon">
                 <span className="icon">
-                  <SportsScoreIcon fontSize="large"></SportsScoreIcon>
+                  <PersonIcon fontSize="large"></PersonIcon>
                 </span>
-                <span className="text">Objetivos</span>
+                <span className="text">Perfil</span>
               </div>
             </li>
             <li
-              className={name === "activities" ? "active" : "activities"}
+              className={name === "logout" ? "active" : "logout"}
               onClick={(e) => {
-                history.push("/activities");
-                onView(e);
+                handleLogOut();
               }}
             >
               <div className="box_icon">
                 <span className="icon">
-                  <FormatListNumberedIcon fontSize="large"></FormatListNumberedIcon>
+                  <LogoutIcon fontSize="large"></LogoutIcon>
                 </span>
-                <span className="text">Atividades</span>
+                <span className="text">LogOut</span>
               </div>
             </li>
-          
+
             <div className="indicator"></div>
           </ul>
         </Container>

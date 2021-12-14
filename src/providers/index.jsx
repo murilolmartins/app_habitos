@@ -1,10 +1,13 @@
 import AuthProvider from "./Auth";
+import HabitsContext from "./IndividualsHabits/index";
 import UserProvider from "./User";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
-      <UserProvider>{children}</UserProvider>
+      <UserProvider>
+        <HabitsContext>{children}</HabitsContext>
+      </UserProvider>
     </AuthProvider>
   );
 };
