@@ -7,7 +7,7 @@ import { AuthContext } from "./../../providers/Auth/index";
 import { UserContext } from "../../providers/User";
 const DesktopHeader = ({ isDashBoard = false }) => {
   const { handleLogOut } = useContext(AuthContext);
-  const { user } = useContext(UserContext);
+  const { user, setUserModalOpen } = useContext(UserContext);
   return (
     <>
       {" "}
@@ -22,7 +22,7 @@ const DesktopHeader = ({ isDashBoard = false }) => {
             <div className="description">
               <h2>{user.username}</h2>
               <p>{user.email}</p>
-              <span>editar</span>
+              <span onClick={() => setUserModalOpen(true)}>editar</span>
             </div>
             <img onClick={() => handleLogOut()} src={logout} alt="" />
           </div>

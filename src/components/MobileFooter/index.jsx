@@ -9,8 +9,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useHistory } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/Auth";
+import { UserContext } from "../../providers/User";
 
 const MobileFooter = ({ name, isDashboard = false }) => {
+  const { setUserModalOpen } = useContext(UserContext);
   const history = useHistory();
   const { handleLogOut } = useContext(AuthContext);
   const onView = (e) => {
@@ -53,9 +55,9 @@ const MobileFooter = ({ name, isDashboard = false }) => {
               </div>
             </li>
             <li
-              className={name === "goals" ? "active" : "goals"}
               onClick={(e) => {
                 onView(e);
+                setUserModalOpen(true);
               }}
             >
               <div className="box_icon">
@@ -66,7 +68,6 @@ const MobileFooter = ({ name, isDashboard = false }) => {
               </div>
             </li>
             <li
-              className={name === "logout" ? "active" : "logout"}
               onClick={(e) => {
                 handleLogOut();
               }}

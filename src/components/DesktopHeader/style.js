@@ -19,6 +19,7 @@ export const Container = styled.div`
         margin: 5px;
         color: #f2a167;
         font-size: 12px;
+        cursor: pointer;
       }
       h2 {
         margin: 0px;
