@@ -9,13 +9,19 @@ export const Container = styled.div`
   width: 270px;
   height: 372px;
   background-color: #ebd2ad;
-  a img {
-    width: 250px;
-    border-radius: 50%;
-  }
   a {
+    font-family: "Oregano", cursive;
+    font-size: 1.25em;
     text-align: center;
     text-decoration: none;
     color: #000000;
+    margin: 0px;
+  }
+  a h2 {
+    margin: 0px;
+  }
+  a img {
+    width: 250px;
+    border-radius: 50%;
   }
 `;
