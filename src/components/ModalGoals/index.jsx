@@ -6,11 +6,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
+import useGoals from './../../providers/Goals/index';
 
 const ModalGoals = ({ isOpen, setIsOpen, group }) => {
+  const {createGoals} = useGoals();
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
     difficulty: yup.string().required("Dificuldade obrigatória"),
+    how_much_achieved:100,
+    group:group,
   });
   const {
     register,
@@ -26,7 +30,7 @@ const ModalGoals = ({ isOpen, setIsOpen, group }) => {
           <h1>Criar meta</h1>
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
-        <form onSubmit={handleSubmit()}>
+        <form onSubmit={handleSubmit(createGoals)}>
           <Errors>{errors.title?.message}</Errors>
           <Input placeholder="Titulo" register={register} name="title"></Input>
           <div className="status">
