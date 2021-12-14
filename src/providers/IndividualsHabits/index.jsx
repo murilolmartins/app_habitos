@@ -1,13 +1,12 @@
 import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
-import AuthContext from "../Auth";
+import { AuthContext } from "../Auth";
 
 export const HabitsContext = createContext();
 
 const HabitsProvider = ({ children }) => {
   const { token } = useContext(AuthContext);
-
 
   const [habits, setHabits] = useState({
     title: "",
