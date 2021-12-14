@@ -24,9 +24,9 @@ const Modal = ({ children, isOpen, setIsOpen }) => {
           background: "#fff",
           color: "#333",
           borderRadius: "8px",
-          width: "348px",
+          width: "320px",
           padding: "10px",
-          height: "170px",
+          height: "380px",
         },
         overlay: {
           background: "rgba(51, -51, -51, 0.5)",

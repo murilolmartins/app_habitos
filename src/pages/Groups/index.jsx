@@ -1,12 +1,19 @@
+import { useState } from "react";
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
+import ModalGroup from "../../components/ModalGroup";
 import Container from "./style";
 
 const Groups = () => {
+  const [isModalGroupOpen, setisModalGroupOpen] = useState(false);
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
       <MobileFooter isDashboard name="groups"></MobileFooter>
+      <ModalGroup
+        setIsOpen={setisModalGroupOpen}
+        isOpen={isModalGroupOpen}
+      ></ModalGroup>
     </Container>
   );
 };
