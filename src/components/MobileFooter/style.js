@@ -52,9 +52,9 @@ const Container = styled.footer`
         }
       }
       :nth-child(3).active ~ .indicator {
-        transform: translateX(calc(85px * 2));
+        transform: translateX(calc(83px * 2));
         @media (min-width: 430px) {
-          transform: translateX(calc(122px * 2));
+          transform: translateX(calc(120px * 2));
         }
       }
       :nth-child(4).active ~ .indicator {

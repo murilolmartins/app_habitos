@@ -4,6 +4,7 @@ import api from "../../services/api";
 import { AuthContext } from "../Auth";
 import { UserContext } from "../User";
 
+
 export const HabitsContext = createContext();
 
 const HabitsProvider = ({ children }) => {
@@ -11,6 +12,16 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
   
+  const [habits, setHabits] = useState({
+    title: "",
+    category: "",
+    difficulty: "",
+    frequency: "",
+    achieved: "",
+    how_much_achieved: "",
+    user: "",
+  });
+
   const createHabits = (data) => {
     api
       .post(
