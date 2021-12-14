@@ -7,7 +7,7 @@ import Habits from "../pages/Habits";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SingUp from "../pages/SingUp";
-import Route from './route'
+import Route from "./route";
 const Routes = () => {
   return (
     <Switch>
@@ -18,7 +18,7 @@ const Routes = () => {
       <Route path="/habits" isPrivate component={Habits} />
       <Route path="/groups" isPrivate component={Groups} />
       <Route path="/goals" isPrivate component={Goals} />
-      <Route path="/activities" isPrivate component={Activities} />
+      <Route path="/activities" isPrivate component={Activities} />      
     </Switch>
   );
 };

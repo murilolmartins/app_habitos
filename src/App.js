@@ -2,6 +2,7 @@ import "./App.css";
 import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CreateHabits from "./components/CreateHabits";
 
 function App() {
   return (
@@ -18,9 +19,7 @@ function App() {
         pauseOnHover
       />
       <div className="App-Container">
-
         <Routes />
-
       </div>
     </div>
   );
