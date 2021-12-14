@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AboutUs from "../pages/AboutUs";
 import Activities from "../pages/Activities";
 import Goals from "../pages/Goals";
@@ -7,7 +7,7 @@ import Habits from "../pages/Habits";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SingUp from "../pages/SingUp";
-
+import Route from './route'
 const Routes = () => {
   return (
     <Switch>
@@ -15,10 +15,10 @@ const Routes = () => {
       <Route path="/login" component={Login} />
       <Route path="/singup" component={SingUp} />
       <Route path="/aboutUs" component={AboutUs} />
-      <Route path="/habits" component={Habits} />
-      <Route path="/groups" component={Groups} />
-      <Route path="/goals" component={Goals} />
-      <Route path="/activities" component={Activities} />
+      <Route path="/habits" isPrivate component={Habits} />
+      <Route path="/groups" isPrivate component={Groups} />
+      <Route path="/goals" isPrivate component={Goals} />
+      <Route path="/activities" isPrivate component={Activities} />
     </Switch>
   );
 };

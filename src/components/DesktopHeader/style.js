@@ -6,14 +6,17 @@ export const Container = styled.div`
   border: 2px solid lightblue;
   border-radius: 15px;
   box-shadow: 0px -13px 27px 9px lightblue;
+  
   div {
     display: none;
     @media (min-width: 760px) {
       display: flex;
-      justify-content: space-evenly;
+      /* justify-content: space-evenly; */
+      align-items: center;
+     
     }
     a {
-      margin: 50px;
+      margin: 20px;
       text-decoration: none;
       color: #f2a167;
       font-weight: 600;
@@ -22,8 +25,8 @@ export const Container = styled.div`
   }
   @media screen and (max-width: 1152px) {
     div a {
-      margin-left: 25px;
-      margin-right: 25px;
+      /* margin-left: 25px;
+      margin-right: 25px; */
     }
   }
   @media screen and (max-width: 975px) {
@@ -34,9 +37,14 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 460px) {
     figure img {
       width: 250px;
     }
+  }
+  .links img{
+    width:60px;
+    height:40px;
+    cursor:pointer;
   }
 `;

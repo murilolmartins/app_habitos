@@ -6,6 +6,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useHistory } from "react-router";
 
 const MobileFooter = ({ name, isDashboard = false }) => {
@@ -77,6 +78,7 @@ const MobileFooter = ({ name, isDashboard = false }) => {
                 <span className="text">Atividades</span>
               </div>
             </li>
+          
             <div className="indicator"></div>
           </ul>
         </Container>
