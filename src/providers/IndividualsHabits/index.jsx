@@ -1,13 +1,17 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { AuthContext } from "../Auth";
+import { UserContext } from "../User";
+
 
 export const HabitsContext = createContext();
 
 const HabitsProvider = ({ children }) => {
   const { token } = useContext(AuthContext);
 
+  const { id } = useContext(UserContext);
+  
   const [habits, setHabits] = useState({
     title: "",
     category: "",
@@ -20,19 +24,26 @@ const HabitsProvider = ({ children }) => {
 
   const createHabits = (data) => {
     api
-      .post("habits/", data, {
-        Authorization: `Bearer ${token}`,
-      })
+      .post(
+        "habits/",
+        { ...data, user:id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         toast.success("Hábito criado com sucesso!");
       })
       .catch((err) => {
         toast.error("Não foi possível cadastrar esse hábito");
+        console.log(data);
       });
   };
 
   return (
-    <HabitsContext.Provider value={{ habits, createHabits, setHabits }}>
+    <HabitsContext.Provider value={{createHabits }}>
       {children}
     </HabitsContext.Provider>
   );

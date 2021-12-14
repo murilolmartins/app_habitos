@@ -2,7 +2,10 @@ import "./App.css";
 import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+
 import ModalUser from "./components/ModalUser";
+
 
 function App() {
   return (
@@ -20,7 +23,9 @@ function App() {
       />
       <div className="App-Container">
         <Routes />
+
         <ModalUser></ModalUser>
+
       </div>
     </div>
   );
