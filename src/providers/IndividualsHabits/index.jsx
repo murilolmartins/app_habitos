@@ -11,11 +11,24 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
+  const [habits, setHabits] = useState({
+    title: "Comer",
+    category: "Saude",
+    difficulty: "Facil",
+    frequency: "Todo Dia",
+    achieved: "",
+    how_much_achieved: "",
+    user: "",
+  });
+
+
   const createHabits = (data) => {
     api
       .post(
         "habits/",
+
         { ...data, user: id, achieved: false, how_much_achieved: 0 },
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -32,7 +45,9 @@ const HabitsProvider = ({ children }) => {
   };
 
   return (
-    <HabitsContext.Provider value={{ createHabits }}>
+
+    <HabitsContext.Provider value={{ createHabits, habits }}>
+
       {children}
     </HabitsContext.Provider>
   );
