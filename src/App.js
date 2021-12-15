@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 import ModalUser from "./components/ModalUser";
+import ModalGoals from "./components/ModalGoals";
 
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
       <div className="App-Container">
         <Routes />
 
-        <ModalUser></ModalUser>
-
+        {/* <ModalUser></ModalUser> */}
+        <ModalGoals/>
       </div>
     </div>
   );
