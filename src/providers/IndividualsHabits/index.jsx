@@ -11,6 +11,8 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
+  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
+
   const [habits, setHabits] = useState([]);
 
   const createHabits = (data) => {
@@ -35,43 +37,44 @@ const HabitsProvider = ({ children }) => {
 
   const editHabits = (data) => {
     api
-      .patch(
-        `habits/:${habits.id}`, data,        
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .patch(`habits/:${habits.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         toast.success("Hábito editado com sucesso!");
       })
       .catch((err) => {
-        toast.error("Não foi possível editar esse hábito");       
+        toast.error("Não foi possível editar esse hábito");
       });
   };
 
   const deleteHabits = (data) => {
     api
-      .delete(
-        `habits/:${habits.id}`, data,        
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .delete(`habits/:${habits.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         toast.success("Hábito deletado com sucesso!");
       })
       .catch((err) => {
-        toast.error("Não foi possível deletar um hábito inexistente");       
+        toast.error("Não foi possível deletar um hábito inexistente");
       });
   };
 
- 
   return (
-    <HabitsContext.Provider value={{ createHabits, editHabits, deleteHabits }}>
+    <HabitsContext.Provider
+      value={{
+        createHabits,
+        editHabits,
+        deleteHabits,
+        isNotCreatedHabits,
+        setIsNotCreatedHabits,
+      }}
+    >
       {children}
     </HabitsContext.Provider>
   );
