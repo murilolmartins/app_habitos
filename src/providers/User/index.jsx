@@ -8,7 +8,7 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const { token } = useContext(AuthContext);
-  const [userModalOpen, setUserModalOpen] = useState(true);
+  const [userModalOpen, setUserModalOpen] = useState(false);
   const [user, setUser] = useState({});
   const [id, setId] = useState(0);
 
