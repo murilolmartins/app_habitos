@@ -11,15 +11,19 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
+
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
 
   const [habits, setHabits] = useState([]);
+
 
   const createHabits = (data) => {
     api
       .post(
         "habits/",
+
         { ...data, user: id, achieved: false, how_much_achieved: 0 },
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -66,6 +70,7 @@ const HabitsProvider = ({ children }) => {
   };
 
   return (
+
     <HabitsContext.Provider
       value={{
         createHabits,
@@ -73,8 +78,10 @@ const HabitsProvider = ({ children }) => {
         deleteHabits,
         isNotCreatedHabits,
         setIsNotCreatedHabits,
+        habits,
       }}
     >
+
       {children}
     </HabitsContext.Provider>
   );
