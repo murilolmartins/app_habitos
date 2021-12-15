@@ -11,6 +11,8 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
+  const [habits, setHabits] = useState([]);
+
   const createHabits = (data) => {
     api
       .post(
@@ -24,15 +26,33 @@ const HabitsProvider = ({ children }) => {
       )
       .then((res) => {
         toast.success("Hábito criado com sucesso!");
+        setHabits(res.data);
       })
       .catch((err) => {
         toast.error("Não foi possível cadastrar esse hábito");
-        console.log(data);
       });
   };
 
+  const editHabits = (data) => {
+    api
+      .patch(
+        `habits/:${habits.id}`, data,        
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("Hábito criado com sucesso!");
+      })
+      .catch((err) => {
+        toast.error("Não foi possível cadastrar esse hábito");       
+      });
+  };
+ 
   return (
-    <HabitsContext.Provider value={{ createHabits }}>
+    <HabitsContext.Provider value={{ createHabits, editHabits }}>
       {children}
     </HabitsContext.Provider>
   );
