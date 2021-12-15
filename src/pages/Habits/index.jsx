@@ -11,14 +11,9 @@ import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/Button";
 
 const Habits = () => {
-
-  const [createHabitsOpen, setCreateHabitsOpen] = useState(true);
-  const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
-  
-
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
-  const { habits } = useContext(HabitsContext);
 
+  const { habits } = useContext(HabitsContext);
 
   return (
     <Container>
@@ -38,13 +33,12 @@ const Habits = () => {
             </Button>
           </div>
         </header>
-        <HabitsCard habit={habits}></HabitsCard>
+        {habits.map((habit) => (
+          <HabitsCard habit={habits}></HabitsCard>
+        ))}
       </SmallContainer>
       <MobileFooter isDashboard name="habits"></MobileFooter>
       <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
-
-      <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen}></ModalGoals>
-
     </Container>
   );
 };

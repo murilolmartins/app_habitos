@@ -11,11 +11,9 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
-
-  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
+  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
 
   const [habits, setHabits] = useState([]);
-
 
   const createHabits = (data) => {
     api
@@ -70,7 +68,6 @@ const HabitsProvider = ({ children }) => {
   };
 
   return (
-
     <HabitsContext.Provider
       value={{
         createHabits,
@@ -81,7 +78,6 @@ const HabitsProvider = ({ children }) => {
         habits,
       }}
     >
-
       {children}
     </HabitsContext.Provider>
   );

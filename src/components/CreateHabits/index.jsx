@@ -11,7 +11,13 @@ import { Container, Errors } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 
 const CreateHabits = ({ isOpen, setIsOpen }) => {
-  const { createHabits, editHabits, deleteHabits,isNotCreatedHabits, setIsNotCreatedHabits } = useContext(HabitsContext);
+  const {
+    createHabits,
+    editHabits,
+    deleteHabits,
+    isNotCreatedHabits,
+    setIsNotCreatedHabits,
+  } = useContext(HabitsContext);
 
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
@@ -35,7 +41,13 @@ const CreateHabits = ({ isOpen, setIsOpen }) => {
           {isNotCreatedHabits ? <h1>Criar hábito</h1> : <h1>Editar hábito</h1>}
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
-        <form onSubmit={isNotCreatedHabits?handleSubmit(createHabits):handleSubmit(editHabits)}>
+        <form
+          onSubmit={
+            isNotCreatedHabits
+              ? handleSubmit(createHabits)
+              : handleSubmit(editHabits)
+          }
+        >
           <Errors>{errors.title?.message}</Errors>
           <Input placeholder="Titulo" register={register} name="title"></Input>
           <Errors>{errors.category?.message}</Errors>
