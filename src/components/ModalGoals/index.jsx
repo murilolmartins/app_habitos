@@ -8,9 +8,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
 import {useGoals} from './../../providers/Goals/index';
-
+import {useEffect} from 'react'
 const ModalGoals = ({ isOpen, setIsOpen, group }) => {
-  const {createGoals} = useGoals();
+  const {createGoals,updateGoal,deleteGoal} = useGoals();
+  useEffect(()=>{
+    // updateGoal()
+    deleteGoal()
+  },[deleteGoal])
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
     difficulty: yup.string().required("Dificuldade obrigatória"),

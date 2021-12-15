@@ -19,8 +19,15 @@ export const GoalsProvider = ({ children }) => {
       toast.error('erro')
     });
   };
+
+  const updateGoal = ()=>{
+    api.patch(`/goals/goal_id/`,{achieved:true},{headers:{Authorization: `Bearer ${token}`}}).then(res=>toast.success('Objetivo atualizado!')).catch(err=>toast.error('Objetivo não encontrado'));
+  };
+  const deleteGoal = ()=>{
+    api.delete(`/goals/goal_id/`,{headers:{Authorization: `Bearer ${token}`}}).then(res=>toast.success('Objetivo deletado')).catch(err=>console.log(err))
+  };
   return (
-  <GoalsContext.Provider value={{createGoals}}>
+  <GoalsContext.Provider value={{createGoals,updateGoal,deleteGoal}}>
     {children}
   </GoalsContext.Provider>);
 };
