@@ -18,8 +18,6 @@ const CreateHabits = ({ isOpen, setIsOpen }) => {
     category: yup.string().required("Categoria obrigatória"),
     difficulty: yup.string().required("Dificuldade obrigatória"),
     frequency: yup.string().required("Frequência obrigatória"),
-    achieved: yup.bool().required("Alcance obrigatória"),
-    how_much_achieved: yup.number().required("Porcentagem"),
   });
 
   const {
@@ -67,18 +65,6 @@ const CreateHabits = ({ isOpen, setIsOpen }) => {
             name="frequency"
           ></Input>
           <Errors>{errors.achieved?.message}</Errors>
-          <Input
-            placeholder="Alcançado"
-            register={register}
-            name="achieved"
-          ></Input>
-          <Errors>{errors.how_much_achieved?.message}</Errors>
-          <Input
-            type="number"
-            placeholder="Porcentagem"
-            register={register}
-            name="how_much_achieved"
-          ></Input>
           <Button type="submit"> Criar hábito</Button>
         </form>
       </Container>
