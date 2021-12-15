@@ -1,17 +1,20 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import api from './../../services/api';
-import AuthContext from './../Auth/index';
+import {AuthContext} from './../Auth/index';
 import {toast} from 'react-toastify';
 export const GoalsContext = createContext();
 export const GoalsProvider = ({ children }) => {
-  
+
   const {token} = useContext(AuthContext);
   const createGoals = (data)=>{
-    api.post('/goals/',data,{
-      headers:{Authenticator:`Bearer ${token}`}
+    const newData = {...data,achieved:false,how_much_achieved:100,group:970}
+    api.post('goals/',newData,{
+      headers:
+      {Authorization:`Bearer ${token}`}
     }).then(response=>{
       toast.success('Objetivo criado!')
     }).catch(err=>{
+      console.log(newData)
       console.log(err);
       toast.error('erro')
     });
@@ -21,5 +24,5 @@ export const GoalsProvider = ({ children }) => {
     {children}
   </GoalsContext.Provider>);
 };
-const useGoals = () => useContext(GoalsContext);
-export default useGoals;
+export const useGoals = () =>  useContext(GoalsContext);
+

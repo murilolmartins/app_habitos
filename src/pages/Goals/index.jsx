@@ -5,12 +5,12 @@ import ModalGoals from "../../components/ModalGoals";
 import Container from "./style";
 
 const Goals = () => {
-  const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
+  
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
       <MobileFooter isDashboard name="goals"></MobileFooter>
-      <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen} />
+      {/* <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen} /> */}
     </Container>
   );
 };

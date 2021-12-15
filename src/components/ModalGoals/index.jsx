@@ -2,19 +2,18 @@ import Modal from "../Modal";
 import Input from "../Input";
 import Button from "../Button";
 import { Container, Errors } from "./style";
+import {ContainerInput} from './../RegisterForm/style';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
-import useGoals from './../../providers/Goals/index';
+import {useGoals} from './../../providers/Goals/index';
 
 const ModalGoals = ({ isOpen, setIsOpen, group }) => {
   const {createGoals} = useGoals();
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
     difficulty: yup.string().required("Dificuldade obrigatória"),
-    how_much_achieved:100,
-    group:group,
   });
   const {
     register,
@@ -23,6 +22,7 @@ const ModalGoals = ({ isOpen, setIsOpen, group }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  console.log(errors)
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
@@ -31,8 +31,9 @@ const ModalGoals = ({ isOpen, setIsOpen, group }) => {
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
         <form onSubmit={handleSubmit(createGoals)}>
-          <Errors>{errors.title?.message}</Errors>
-          <Input placeholder="Titulo" register={register} name="title"></Input>
+            <Errors>{errors.title?.message}</Errors>
+            <Input placeholder="Titulo" register={register} name="title"></Input>
+          
           <div className="status">
             <label>Selecionar dificuldade:</label>
             <select
