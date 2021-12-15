@@ -17,6 +17,7 @@ export const Container = styled.div`
 
     h1 {
       text-align: center;
+      font-size: 20px;
     }
   }
   form {
@@ -37,6 +38,7 @@ export const Container = styled.div`
       justify-content: space-between;
       align-items: center;
       width: 90%;
+
       label {
         width: 150px;
         text-align: left;
@@ -51,7 +53,7 @@ export const Container = styled.div`
       }
     }
     button {
-      margin-top: 100px;
+      margin-top: -20px;
     }
   }
 `;

@@ -1,6 +1,7 @@
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
 import CreateHabits from "../../components/CreateHabits";
+
 import { Container, SmallContainer } from "./style";
 import { useContext, useState } from "react";
 import HabitsCard from "../../components/HabitsCard";
@@ -12,6 +13,7 @@ import Button from "../../components/Button";
 const Habits = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const { habits } = useContext(HabitsContext);
+
 
   return (
     <Container>
@@ -35,6 +37,7 @@ const Habits = () => {
       </SmallContainer>
       <MobileFooter isDashboard name="habits"></MobileFooter>
       <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
+      
     </Container>
   );
 };
