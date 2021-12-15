@@ -11,17 +11,19 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
-  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
+  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
 
   const [habitsInfo, setHabitsInfo] = useState([]);
 
-  const [habits, setHabits] = useState([])
+  const [habits, setHabits] = useState([]);
 
   const createHabits = (data) => {
     api
       .post(
         "habits/",
+
         { ...data, user: id, achieved: false, how_much_achieved: 0 },
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -52,23 +54,20 @@ const HabitsProvider = ({ children }) => {
       });
   };
 
-  useEffect(() => {    
-      api
-        .get("habits/personal/`", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setHabits([...habits, res.data]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });    
-  }, []);
-
-
- 
+  const getHabits = () => {
+    api
+      .get("habits/personal/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setHabits([...res.data]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const deleteHabits = (data) => {
     api
@@ -85,6 +84,17 @@ const HabitsProvider = ({ children }) => {
       });
   };
 
+  const [inputText, setInputText] = useState("");
+
+  const habitsSearch = (inputText) => {
+    if (inputText === "") return;
+    const insensitiveCase = new RegExp(inputText, "i");
+    const filteredHabits = habits.filter((habit) =>
+      insensitiveCase.test(habit.name || habit.category)
+    );
+    setHabits(filteredHabits);
+  };
+
   return (
     <HabitsContext.Provider
       value={{
@@ -93,6 +103,11 @@ const HabitsProvider = ({ children }) => {
         deleteHabits,
         isNotCreatedHabits,
         setIsNotCreatedHabits,
+        habits,
+        inputText,
+        setInputText,
+        habitsSearch,
+        getHabits,
       }}
     >
       {children}
