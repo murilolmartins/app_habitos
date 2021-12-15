@@ -44,12 +44,13 @@ const HabitsProvider = ({ children }) => {
         }
       )
       .then((res) => {
-        toast.success("Hábito criado com sucesso!");
+        toast.success("Hábito editado com sucesso!");
       })
       .catch((err) => {
-        toast.error("Não foi possível cadastrar esse hábito");       
+        toast.error("Não foi possível editar esse hábito");       
       });
   };
+
  
   return (
     <HabitsContext.Provider value={{ createHabits, editHabits }}>
