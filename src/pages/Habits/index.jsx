@@ -8,13 +8,13 @@ import { useState} from "react"
 const Habits = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(true);
   const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
-
+  
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
       <MobileFooter isDashboard name="habits"></MobileFooter>
       <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
-      <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen} ></ModalGoals>
+      <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen}></ModalGoals>
     </Container>
   );
 };

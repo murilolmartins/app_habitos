@@ -6,8 +6,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
-
-const ModalGroup = ({ isOpen, setIsOpen, isCreateGroup = true, group }) => {
+import {useGroups} from './../../providers/Groups/index';
+import {useEffect} from 'react'
+const ModalGroup = ({ isOpen, setIsOpen }) => {
+ 
+  const {createGroup,isNotCreatedGroup,updateGroup,subscribeOnGroup,unsubscribe} = useGroups();
   const schema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     description: yup.string().required("Descrição obrigatória"),
@@ -20,14 +23,18 @@ const ModalGroup = ({ isOpen, setIsOpen, isCreateGroup = true, group }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  useEffect(()=>{
+    subscribeOnGroup()
+    unsubscribe()
+  },[subscribeOnGroup])
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
         <header>
-          {isCreateGroup ? <h1>Criar grupo</h1> : <h1>Editar grupo</h1>}
+          {isNotCreatedGroup ? <h1>Criar grupo</h1> : <h1>Editar grupo</h1>}
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
-        <form onSubmit={handleSubmit()}>
+        <form onSubmit={isNotCreatedGroup?handleSubmit(createGroup):handleSubmit(updateGroup)}>
           <Errors>{errors.name?.message}</Errors>
           <Input placeholder="Nome" register={register} name="name"></Input>
           <Errors>{errors.description?.message}</Errors>
@@ -43,7 +50,7 @@ const ModalGroup = ({ isOpen, setIsOpen, isCreateGroup = true, group }) => {
             name="category"
           ></Input>
           <Button type="submit">
-            {isCreateGroup ? "Cadastrar" : "Editar"}
+            {isNotCreatedGroup ? "Cadastrar" : "Editar"}
           </Button>
         </form>
       </Container>
