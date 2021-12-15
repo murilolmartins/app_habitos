@@ -13,7 +13,9 @@ const HabitsProvider = ({ children }) => {
 
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
 
-  const [habits, setHabits] = useState([]);
+  const [habitsInfo, setHabitsInfo] = useState([]);
+
+  const [habits, setHabits] = useState([])
 
   const createHabits = (data) => {
     api
@@ -28,7 +30,7 @@ const HabitsProvider = ({ children }) => {
       )
       .then((res) => {
         toast.success("Hábito criado com sucesso!");
-        setHabits(res.data);
+        setHabitsInfo(res.data);
       })
       .catch((err) => {
         toast.error("Não foi possível cadastrar esse hábito");
@@ -37,7 +39,7 @@ const HabitsProvider = ({ children }) => {
 
   const editHabits = (data) => {
     api
-      .patch(`habits/:${habits.id}`, data, {
+      .patch(`habits/:${habitsInfo.id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,9 +52,27 @@ const HabitsProvider = ({ children }) => {
       });
   };
 
+  useEffect(() => {    
+      api
+        .get("habits/personal/`", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setHabits([...habits, res.data]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });    
+  }, []);
+
+
+ 
+
   const deleteHabits = (data) => {
     api
-      .delete(`habits/:${habits.id}`, data, {
+      .delete(`habits/:${habitsInfo.id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
