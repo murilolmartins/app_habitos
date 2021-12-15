@@ -6,7 +6,7 @@ import ModalUser from "../../components/ModalUser";
 import Container from "./style";
 
 const Groups = () => {
-  const [isModalGroupOpen, setisModalGroupOpen] = useState(false);
+  const [isModalGroupOpen, setisModalGroupOpen] = useState(true);
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>

@@ -21,11 +21,14 @@ const HabitsProvider = ({ children }) => {
     user: "",
   });
 
+
   const createHabits = (data) => {
     api
       .post(
         "habits/",
-        { ...data, user: id },
+
+        { ...data, user: id, achieved: false, how_much_achieved: 0 },
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -42,7 +45,9 @@ const HabitsProvider = ({ children }) => {
   };
 
   return (
+
     <HabitsContext.Provider value={{ createHabits, habits }}>
+
       {children}
     </HabitsContext.Provider>
   );
