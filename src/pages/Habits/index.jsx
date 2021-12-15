@@ -14,11 +14,11 @@ const Habits = () => {
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
       <MobileFooter isDashboard name="habits"></MobileFooter>
-      {/* <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
+      <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
       <ModalGoals
         setIsOpen={setIsModalGoalOpen}
         isOpen={isModalGoalOpen}
-      ></ModalGoals> */}
+      ></ModalGoals>
       <CreateActivities
         setIsOpen={setCreateActivitiesOpen}
         isOpen={createActivitiesOpen}
