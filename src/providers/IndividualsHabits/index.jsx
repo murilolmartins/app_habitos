@@ -51,9 +51,27 @@ const HabitsProvider = ({ children }) => {
       });
   };
 
+  const deleteHabits = (data) => {
+    api
+      .delete(
+        `habits/:${habits.id}`, data,        
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("Hábito deletado com sucesso!");
+      })
+      .catch((err) => {
+        toast.error("Não foi possível deletar um hábito inexistente");       
+      });
+  };
+
  
   return (
-    <HabitsContext.Provider value={{ createHabits, editHabits }}>
+    <HabitsContext.Provider value={{ createHabits, editHabits, deleteHabits }}>
       {children}
     </HabitsContext.Provider>
   );
