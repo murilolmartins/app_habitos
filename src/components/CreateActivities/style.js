@@ -7,6 +7,9 @@ export const Container = styled.div`
     display:flex;
     flex-direction:row;
     justify-content: space-between;
+    svg{
+      cursor:pointer;
+    }
   }
   form p {
     color: red;

@@ -12,6 +12,7 @@ export const GoalsProvider = ({ children }) => {
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const [isModalGoalOpen, setIsModalGoalOpen] = useState(false);
   const [goalsOnGroup, setGoalsOnGroup] = useState([]);
+  const [isAchieved,setIsAchieved] = useState(false);
   const createGoals = (data) => {
     const newData = {
       ...data,
@@ -73,6 +74,8 @@ export const GoalsProvider = ({ children }) => {
         isModalGoalOpen,
         setIsModalGoalOpen,
         setGoalId,
+        isAchieved,
+        setIsAchieved
       }}
     >
       {children}
