@@ -13,6 +13,9 @@ export const Container = styled.div`
       text-align: center;
     }
   }
+  div{
+    
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -26,7 +29,7 @@ export const Container = styled.div`
     }
     div {
       color: black;
-      margin-bottom: 20px;
+      /* margin-bottom: 10px; */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -45,7 +48,8 @@ export const Container = styled.div`
       }
     }
     button {
-      margin-top: 100px;
+      margin-top: 30px;
+      margin-left:4px;
     }
   }
 `;
@@ -56,4 +60,9 @@ export const Errors = styled.span`
   @media (min-width: 768px) {
     align-self: flex-start;
   }
+`;
+export const ButtonsUpdate = styled.div`
+margin-top:10px;
+  display:flex;
+  justify-content: space-between;
 `;

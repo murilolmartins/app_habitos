@@ -11,7 +11,9 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
-  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
+  const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
+
+  const [habitsInfo, setHabitsInfo] = useState([]);
 
   const [habits, setHabits] = useState([]);
 
@@ -46,7 +48,9 @@ const HabitsProvider = ({ children }) => {
       )
       .then((res) => {
         toast.success("Hábito criado com sucesso!");
-        setHabits(res.data);
+
+        setHabitsInfo(res.data);
+        getHabits();
       })
       .catch((err) => {
         toast.error("Não foi possível cadastrar esse hábito");
@@ -55,7 +59,8 @@ const HabitsProvider = ({ children }) => {
 
   const editHabits = (data) => {
     api
-      .patch(`habits/:${habits.id}`, data, {
+
+      .patch(`habits/:${habitsInfo.id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,18 +74,33 @@ const HabitsProvider = ({ children }) => {
   };
 
   const deleteHabits = (data) => {
+    console.log(data.id);
     api
-      .delete(`habits/:${habits.id}`, data, {
+      .delete(`habits/${data.id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
         toast.success("Hábito deletado com sucesso!");
+        getHabits();
       })
       .catch((err) => {
         toast.error("Não foi possível deletar um hábito inexistente");
       });
+  };
+
+  const [inputText, setInputText] = useState("");
+
+  const habitsSearch = (inputText) => {
+    if (inputText === "") {
+      getHabits();
+    }
+    const insensitiveCase = new RegExp(inputText, "i");
+    const filteredHabits = habits.filter((habit) =>
+      insensitiveCase.test(habit.title || habit.category)
+    );
+    setHabits(filteredHabits);
   };
 
   return (
@@ -93,6 +113,10 @@ const HabitsProvider = ({ children }) => {
         isNotCreatedHabits,
         setIsNotCreatedHabits,
         habits,
+
+        inputText,
+        setInputText,
+        habitsSearch,
       }}
     >
       {children}

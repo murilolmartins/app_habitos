@@ -3,10 +3,8 @@ import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 import ModalUser from "./components/ModalUser";
 import ModalGoals from "./components/ModalGoals";
-
 
 function App() {
   return (
@@ -25,8 +23,8 @@ function App() {
       <div className="App-Container">
         <Routes />
 
-        {/* <ModalUser></ModalUser> */}
-        <ModalGoals/>
+        <ModalUser></ModalUser>
+        <ModalGoals />
       </div>
     </div>
   );
