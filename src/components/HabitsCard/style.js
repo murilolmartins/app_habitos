@@ -7,6 +7,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   color: white;
+  margin-bottom: 10px;
 
   header {
     display: flex;
