@@ -23,7 +23,7 @@ const Habits = () => {
     getHabits();
   }, []);
 
-  console.log(habits);
+  
 
   return (
     <Container>

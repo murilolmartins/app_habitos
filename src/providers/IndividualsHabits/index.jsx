@@ -14,6 +14,10 @@ const HabitsProvider = ({ children }) => {
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
 
   const [habitsInfo, setHabitsInfo] = useState([]);
+  const [habitId, setHabitId] = useState(0);
+  const [achievedInfo, setAchievedInfo] = useState({
+    achieved: false,
+  });
 
   const [habits, setHabits] = useState([]);
 
@@ -59,16 +63,22 @@ const HabitsProvider = ({ children }) => {
   const editHabits = (data) => {
     api
 
-      .patch(`habits/:${habitsInfo.id}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .patch(
+        `habits/${habitId}/`,
+        { ...data, how_much_achieved: 0 },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
       .then((res) => {
-        toast.success("Hábito editado com sucesso!");
+        toast.success("Hábito concluído!");
       })
       .catch((err) => {
         toast.error("Não foi possível editar esse hábito");
+        console.log(err);
       });
   };
 
@@ -107,10 +117,12 @@ const HabitsProvider = ({ children }) => {
         createHabits,
         editHabits,
         deleteHabits,
+        setHabitId,
         isNotCreatedHabits,
         setIsNotCreatedHabits,
         habits,
-
+        achievedInfo,
+        setAchievedInfo,
         inputText,
         setInputText,
         habitsSearch,
