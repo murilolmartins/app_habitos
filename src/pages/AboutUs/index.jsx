@@ -12,7 +12,7 @@ const AboutUs = () => {
   const staff = [
     {
       name: "About Us",
-      job: "We are a team from Kenzie Academy, and together with focus and hard work we build amazing thigs, like this app, if you want know more about the team members click in the cards",
+      job: "We are a team from Kenzie Academy, and together with focus and hard work we build amazing things, like this app, if you want to know more about the team members click in the cards!",
       img: "",
       link: "https://kenzie.com.br/",
     },
@@ -53,6 +53,7 @@ const AboutUs = () => {
       <Content>
         {staff.map((staff, index) => (
           <StaffCard
+            key={staff.name}
             name={staff.name}
             img={staff.img}
             job={staff.job}

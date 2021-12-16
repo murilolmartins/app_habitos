@@ -52,9 +52,9 @@ const Container = styled.footer`
         }
       }
       :nth-child(3).active ~ .indicator {
-        transform: translateX(calc(85px * 2));
+        transform: translateX(calc(83px * 2));
         @media (min-width: 430px) {
-          transform: translateX(calc(122px * 2));
+          transform: translateX(calc(120px * 2));
         }
       }
       :nth-child(4).active ~ .indicator {
@@ -96,7 +96,7 @@ const Container = styled.footer`
       top: -60%;
       width: 70px;
       height: 70px;
-      background-color: lightblue;
+      background-color: white;
       border-radius: 50%;
       border: 6px solid white;
       transition: 0.5s;
@@ -110,7 +110,7 @@ const Container = styled.footer`
       height: 20px;
       background-color: transparent;
       border-top-left-radius: 24px;
-      box-shadow: 0px -11px 0px 0px white;
+      box-shadow: 0px -11px 0px 0px transparent;
     }
     .indicator::before {
       content: "";
@@ -121,7 +121,7 @@ const Container = styled.footer`
       height: 20px;
       background-color: transparent;
       border-top-right-radius: 24px;
-      box-shadow: 0px -11px 0px 0px white;
+      box-shadow: 0px -11px 0px 0px transparent;
     }
   }
 `;

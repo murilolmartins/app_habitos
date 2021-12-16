@@ -3,6 +3,9 @@ import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import ModalUser from "./components/ModalUser";
+import ModalGoals from "./components/ModalGoals";
+
 function App() {
   return (
     <div className="App">
@@ -18,9 +21,10 @@ function App() {
         pauseOnHover
       />
       <div className="App-Container">
-
         <Routes />
 
+        <ModalUser></ModalUser>
+        <ModalGoals />
       </div>
     </div>
   );
