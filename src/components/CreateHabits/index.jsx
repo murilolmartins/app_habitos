@@ -1,4 +1,3 @@
-import { AuthContext } from "../../providers/Auth";
 import { HabitsContext } from "../../providers/IndividualsHabits";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
@@ -11,7 +10,10 @@ import { Container, Errors } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 
 const CreateHabits = ({ isOpen, setIsOpen }) => {
-  const { createHabits } = useContext(HabitsContext);
+
+  const { createHabits, editHabits, isNotCreatedHabits } =
+    useContext(HabitsContext);
+
 
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
@@ -32,10 +34,16 @@ const CreateHabits = ({ isOpen, setIsOpen }) => {
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
         <header>
-          <h1>Criar hábito</h1>
+          {isNotCreatedHabits ? <h1>Criar hábito</h1> : <h1>Editar hábito</h1>}
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
-        <form onSubmit={handleSubmit(createHabits)}>
+        <form
+          onSubmit={
+            isNotCreatedHabits
+              ? handleSubmit(createHabits)
+              : handleSubmit(editHabits)
+          }
+        >
           <Errors>{errors.title?.message}</Errors>
           <Input placeholder="Titulo" register={register} name="title"></Input>
           <Errors>{errors.category?.message}</Errors>
@@ -65,7 +73,10 @@ const CreateHabits = ({ isOpen, setIsOpen }) => {
             name="frequency"
           ></Input>
           <Errors>{errors.achieved?.message}</Errors>
-          <Button type="submit"> Criar hábito</Button>
+          <Button type="submit">
+            {" "}
+            {isNotCreatedHabits ? "Cadastrar" : "Editar"}
+          </Button>
         </form>
       </Container>
     </Modal>

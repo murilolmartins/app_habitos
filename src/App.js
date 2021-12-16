@@ -23,7 +23,7 @@ function App() {
       <div className="App-Container">
         <Routes />
 
-        {/* <ModalUser></ModalUser> */}
+        <ModalUser></ModalUser>
         <ModalGoals />
       </div>
     </div>

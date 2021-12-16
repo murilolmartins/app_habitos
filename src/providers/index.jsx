@@ -4,16 +4,21 @@ import UserProvider from "./User";
 import { GoalsProvider } from "./Goals";
 import HabitsProvider from "./IndividualsHabits";
 import { ActivitiesProvider } from "./Activities";
+import GroupsProvider from "./Groups";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
       <UserProvider>
-        <GoalsProvider>
-          <ActivitiesProvider>
-            <HabitsProvider> {children}</HabitsProvider>
-          </ActivitiesProvider>
-        </GoalsProvider>
+        <HabitsProvider>
+          <GroupsProvider>
+            <GoalsProvider>
+              <ActivitiesProvider>
+                <HabitsProvider> {children}</HabitsProvider>
+              </ActivitiesProvider>
+            </GoalsProvider>
+          </GroupsProvider>
+        </HabitsProvider>
       </UserProvider>
     </AuthProvider>
   );
