@@ -37,7 +37,6 @@ export default function RegisterForm() {
       <Form onSubmit={handleSubmit(signUpRequisition)}>
         <ContainerInput>
           <Input
-            onChange={(e) => console.log(e.target.value)}
             placeholder="Nome de usuário*"
             register={register}
             name="username"

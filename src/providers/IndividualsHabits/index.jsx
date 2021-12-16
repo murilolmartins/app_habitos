@@ -62,6 +62,7 @@ const HabitsProvider = ({ children }) => {
 
   const editHabits = (data) => {
     api
+
       .patch(
         `habits/${habitId}/`,
         { ...data, how_much_achieved: 0 },
@@ -71,6 +72,7 @@ const HabitsProvider = ({ children }) => {
           },
         }
       )
+
       .then((res) => {
         toast.success("Hábito concluído!");
       })

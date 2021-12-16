@@ -7,11 +7,15 @@ export const Container = styled.div`
     svg {
       align-self: center;
       margin-left: 100px;
+      cursor:pointer;
     }
 
     h1 {
       text-align: center;
     }
+  }
+  div{
+    
   }
   form {
     display: flex;
@@ -26,7 +30,7 @@ export const Container = styled.div`
     }
     div {
       color: black;
-      margin-bottom: 20px;
+      /* margin-bottom: 10px; */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -45,7 +49,8 @@ export const Container = styled.div`
       }
     }
     button {
-      margin-top: 100px;
+      margin-top: 30px;
+      margin-left:4px;
     }
   }
 `;
@@ -55,5 +60,13 @@ export const Errors = styled.span`
   margin-left: 10px;
   @media (min-width: 768px) {
     align-self: flex-start;
+  }
+`;
+export const ButtonsUpdate = styled.div`
+margin-top:10px;
+  display:flex;
+  justify-content: space-between;
+  button{
+    margin:8px;
   }
 `;

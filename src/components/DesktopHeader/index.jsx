@@ -5,9 +5,11 @@ import logout from "./../../assets/images/Logout.png";
 import { useContext } from "react";
 import { AuthContext } from "./../../providers/Auth/index";
 import { UserContext } from "../../providers/User";
+import { HabitsContext } from "../../providers/IndividualsHabits";
 const DesktopHeader = ({ isDashBoard = false }) => {
   const { handleLogOut } = useContext(AuthContext);
   const { user, setUserModalOpen } = useContext(UserContext);
+  const { getHabits } = useContext(HabitsContext);
   return (
     <>
       {" "}
@@ -17,7 +19,9 @@ const DesktopHeader = ({ isDashBoard = false }) => {
             <img src={logo} alt="Logo" />
           </figure>
           <div className="links">
-            <Link to="/habits">Hábitos</Link>
+            <Link to="/habits" onClick={getHabits}>
+              Hábitos
+            </Link>
             <Link to="/groups">Grupos</Link>
             <div className="description">
               <h2>{user.username}</h2>
