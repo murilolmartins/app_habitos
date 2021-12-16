@@ -34,7 +34,7 @@ const Habits = () => {
           </div>
         </header>
         {habits.map((habit) => (
-          <HabitsCard habit={habits}></HabitsCard>
+          <HabitsCard habit={habit}></HabitsCard>
         ))}
       </SmallContainer>
       <MobileFooter isDashboard name="habits"></MobileFooter>
