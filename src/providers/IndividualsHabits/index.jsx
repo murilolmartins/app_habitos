@@ -13,8 +13,11 @@ const HabitsProvider = ({ children }) => {
 
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
 
-
   const [habitsInfo, setHabitsInfo] = useState([]);
+  const [habitId, setHabitId] = useState(0);
+  const [achievedInfo, setAchievedInfo] = useState({
+    achieved: false,
+  });
 
   const [habits, setHabits] = useState([]);
 
@@ -32,7 +35,6 @@ const HabitsProvider = ({ children }) => {
         console.log(err);
       });
   };
-
 
   const createHabits = (data) => {
     api
@@ -52,7 +54,6 @@ const HabitsProvider = ({ children }) => {
 
         setHabitsInfo(res.data);
         getHabits();
-
       })
       .catch((err) => {
         toast.error("Não foi possível cadastrar esse hábito");
@@ -61,24 +62,25 @@ const HabitsProvider = ({ children }) => {
 
   const editHabits = (data) => {
     api
-
-      .patch(`habits/:${habitsInfo.id}`, data, {
-
-
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .patch(
+        `habits/${habitId}/`,
+        { ...data, how_much_achieved: 0 },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
-        toast.success("Hábito editado com sucesso!");
+        toast.success("Hábito concluído!");
       })
       .catch((err) => {
         toast.error("Não foi possível editar esse hábito");
+        console.log(err);
       });
   };
 
   const deleteHabits = (data) => {
-    console.log(data.id);
     api
       .delete(`habits/${data.id}/`, {
         headers: {
@@ -107,22 +109,22 @@ const HabitsProvider = ({ children }) => {
     setHabits(filteredHabits);
   };
 
-
   return (
     <HabitsContext.Provider
       value={{
         createHabits,
         editHabits,
         deleteHabits,
+        setHabitId,
         isNotCreatedHabits,
         setIsNotCreatedHabits,
         habits,
-
+        achievedInfo,
+        setAchievedInfo,
         inputText,
         setInputText,
         habitsSearch,
         getHabits,
-
       }}
     >
       {children}

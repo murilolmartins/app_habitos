@@ -1,16 +1,20 @@
 import Container from "./style";
 import { Checkbox } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { HabitsContext } from "../../providers/IndividualsHabits";
 import CloseIcon from "@mui/icons-material/Close";
 
 const HabitsCard = ({ habit, setModalHabitsOpen }) => {
-  const { deleteHabits } = useContext(HabitsContext);
+  const { deleteHabits, achievedInfo, setAchievedInfo, editHabits, setHabitId } =
+    useContext(HabitsContext);
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false);  
+
   const handleCheckboxChange = (e) => {
     setChecked(!checked);
-  };
+    setAchievedInfo({ ...achievedInfo, achieved: !checked});    
+    editHabits(achievedInfo);
+  };  
 
   return (
     <Container checked={checked}>
@@ -18,6 +22,7 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
         onClick={(e) => {
           let habitSection = document.querySelector(`.h${habit.id}`);
           habitSection.classList.toggle("hidden");
+          setHabitId(habit.id)
         }}
       >
         <h2>{habit.title}</h2>
@@ -28,7 +33,6 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
         </div>
         <CloseIcon
           onClick={() => {
-            console.log(habit);
             deleteHabits(habit);
           }}
         ></CloseIcon>
@@ -49,6 +53,7 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
           size="large"
           checked={checked}
           onChange={handleCheckboxChange}
+         
         />
       </section>
     </Container>
