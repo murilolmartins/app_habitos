@@ -1,8 +1,7 @@
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
 import CreateHabits from "../../components/CreateHabits";
-import ModalGoals from "./../../components/ModalGoals/index";
-import CreateActivities from "../../components/CreateActivities";
+import {UserContext} from './../../providers/User';
 import { Container, SmallContainer } from "./style";
 import { useContext, useState, useEffect } from "react";
 import HabitsCard from "../../components/HabitsCard";
@@ -10,14 +9,16 @@ import { HabitsContext } from "../../providers/IndividualsHabits";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/Button";
-const Habits = () => {
-  const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
-  const [createActivitiesOpen, setCreateActivitiesOpen] = useState(true);
-  const [modalHabitsOpen, setModalHabitsOpen] = useState(false);
+import ModalUser from "../../components/ModalUser";
 
+const Habits = () => {
+
+
+  const [modalHabitsOpen, setModalHabitsOpen] = useState(false);
+  
   const { habits, inputText, setInputText, habitsSearch, getHabits } =
     useContext(HabitsContext);
-
+    const { user,setUserModalOpen} = useContext(UserContext);
   useEffect(() => {
     getHabits();
   }, []);
@@ -57,15 +58,10 @@ const Habits = () => {
         ))}
       </SmallContainer>
       <MobileFooter isDashboard name="habits"></MobileFooter>
+     
+      <ModalUser setIsOpen={setUserModalOpen} isOpen={user}/>
       <CreateHabits setIsOpen={setModalHabitsOpen} isOpen={modalHabitsOpen} />
-      <ModalGoals
-        setIsOpen={setIsModalGoalOpen}
-        isOpen={isModalGoalOpen}
-      ></ModalGoals>
-      <CreateActivities
-        setIsOpen={setCreateActivitiesOpen}
-        isOpen={createActivitiesOpen}
-      ></CreateActivities>
+      
     </Container>
   );
 };

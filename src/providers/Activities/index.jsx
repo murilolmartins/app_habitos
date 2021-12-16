@@ -2,18 +2,22 @@ import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { AuthContext } from "../Auth";
+import {useGroups} from './../Groups';
 export const ActivitiesContext = createContext();
 export const ActivitiesProvider = ({ children }) => {
+  const [isNotCreatedActivitie,setIsNotCreatedActivitie] = useState(false);
   const { token } = useContext(AuthContext);
+  const {groupId} = useGroups();
+  const {actId} = useGroups()
   //   const [activities, setActivities] = useState({
   //     title: "",
   //     realization_time: "",
   //     group: "",
   //   });
-
+  
   const createActivity = (data) => {
     console.log(data);
-    const newData = { ...data, group: 1030 };
+    const newData = { ...data, group: groupId };
     api
       .post("/activities/", newData, {
         headers: { Authorization: `Bearer ${token}` },
@@ -28,22 +32,25 @@ export const ActivitiesProvider = ({ children }) => {
       });
   };
 
-  const updateActivity = ({ id, ...res }) => {
+  const updateActivity = (data) => {
     api
       .patch(
-        `/activities/${id}/`,
-        { ...res },
-        { headers: { Autorization: `Bearer ${token}` } }
+        `/activities/${actId}/`,
+        data,
+        { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((res) => {
         toast.success("Atividade atualizada!");
       })
-      .catch((err) => toast.error("Atividade nao listada"));
+      .catch((err) => {
+        console.log(err)
+        toast.error("Atividade nao listada")});
   };
-  const deleteActivity = ({ id }) => {
+  const deleteActivity = (actId) => {
+  
     api
-      .delete(`/activities/${id}/`, {
-        headers: { Autorization: `Bearer${token}` },
+      .delete(`/activities/${actId}/`,{
+        headers:{ Authorization: `Bearer ${token}` },
       })
       .then((res) => toast.success("Atividade deletada com sucesso"))
       .catch((err) => {
@@ -53,7 +60,7 @@ export const ActivitiesProvider = ({ children }) => {
   };
   return (
     <ActivitiesContext.Provider
-      value={{ createActivity, updateActivity, deleteActivity }}
+      value={{ createActivity, updateActivity, deleteActivity,isNotCreatedActivitie,setIsNotCreatedActivitie}}
     >
       {children}
     </ActivitiesContext.Provider>
