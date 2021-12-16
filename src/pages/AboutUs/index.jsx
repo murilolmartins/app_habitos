@@ -51,13 +51,14 @@ const AboutUs = () => {
     <Container>
       <DesktopHeader></DesktopHeader>
       <Content>
-        {staff.map((staff) => (
+        {staff.map((staff, index) => (
           <StaffCard
             key={staff.name}
             name={staff.name}
             img={staff.img}
             job={staff.job}
             link={staff.link}
+            key={index}
           />
         ))}
       </Content>

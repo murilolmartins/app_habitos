@@ -13,11 +13,13 @@ const UserProvider = ({ children }) => {
   const [id, setId] = useState(0);
 
   useEffect(() => {
+
     if (!!token) {
       const idUser = jwt_decode(token).user_id;
       setId(idUser);
       loadUser(idUser);
     }
+
   }, [token]);
 
   const editProfile = (data) => {
