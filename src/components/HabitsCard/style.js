@@ -14,7 +14,7 @@ const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    background-color: #f2a167;
+    background-color: ${({ checked }) => (checked ? "#8f8f8f" : "#f2a167")};
     border-radius: 5px;
     div {
       color: #8a8484;
@@ -42,7 +42,7 @@ const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 99%;
-    background-color: #ffa96a;
+    background-color: ${({ checked }) => (checked ? "#8f8f8f" : "#f2a167")};
     border-radius: 5px;
     div {
       color: #8a8484;
@@ -68,5 +68,7 @@ const Container = styled.div`
     display: none;
   }
 `;
+
+
 
 export default Container;
