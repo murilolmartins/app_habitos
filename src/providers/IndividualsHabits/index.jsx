@@ -13,6 +13,7 @@ const HabitsProvider = ({ children }) => {
 
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
 
+
   const [habitsInfo, setHabitsInfo] = useState([]);
 
   const [habits, setHabits] = useState([]);
@@ -32,6 +33,7 @@ const HabitsProvider = ({ children }) => {
       });
   };
 
+
   const createHabits = (data) => {
     api
       .post(
@@ -47,8 +49,10 @@ const HabitsProvider = ({ children }) => {
       )
       .then((res) => {
         toast.success("Hábito criado com sucesso!");
+
         setHabitsInfo(res.data);
         getHabits();
+
       })
       .catch((err) => {
         toast.error("Não foi possível cadastrar esse hábito");
@@ -57,7 +61,10 @@ const HabitsProvider = ({ children }) => {
 
   const editHabits = (data) => {
     api
+
       .patch(`habits/:${habitsInfo.id}`, data, {
+
+
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -100,6 +107,7 @@ const HabitsProvider = ({ children }) => {
     setHabits(filteredHabits);
   };
 
+
   return (
     <HabitsContext.Provider
       value={{
@@ -109,10 +117,12 @@ const HabitsProvider = ({ children }) => {
         isNotCreatedHabits,
         setIsNotCreatedHabits,
         habits,
+
         inputText,
         setInputText,
         habitsSearch,
         getHabits,
+
       }}
     >
       {children}

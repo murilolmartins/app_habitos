@@ -9,12 +9,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
 import {useGoals} from './../../providers/Goals/index';
 import {useEffect} from 'react'
-const ModalGoals = ({ isOpen, setIsOpen, group }) => {
-  const {createGoals,updateGoal,deleteGoal} = useGoals();
-  useEffect(()=>{
-    // updateGoal()
-    deleteGoal()
-  },[deleteGoal])
+const ModalGoals = ({ isOpen, setIsOpen, isNotCreatedGoal , group }) => {
+  const {createGoals,updateGoalData,updateGoalAchieved,deleteGoal} = useGoals();
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
     difficulty: yup.string().required("Dificuldade obrigatória"),
@@ -26,15 +22,17 @@ const ModalGoals = ({ isOpen, setIsOpen, group }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  console.log(errors)
+  useEffect(()=>{
+    updateGoalAchieved()
+  },[])
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
         <header>
-          <h1>Criar meta</h1>
+          {isNotCreatedGoal?<h1>Criar meta</h1>:<h1>Atualizar meta</h1>}
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
-        <form onSubmit={handleSubmit(createGoals)}>
+        <form onSubmit={isNotCreatedGoal?handleSubmit(createGoals):handleSubmit(updateGoalData)}>
             <Errors>{errors.title?.message}</Errors>
             <Input placeholder="Titulo" register={register} name="title"></Input>
           
@@ -50,7 +48,7 @@ const ModalGoals = ({ isOpen, setIsOpen, group }) => {
               <option value="Dificil">Dificil</option>
             </select>
           </div>
-          <Button type="submit">Cadastrar</Button>
+          <Button type="submit">{isNotCreatedGoal?'Cadastrar':'Atualizar'}</Button>
         </form>
       </Container>
     </Modal>

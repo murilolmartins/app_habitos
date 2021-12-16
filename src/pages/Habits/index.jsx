@@ -11,6 +11,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/Button";
 
 const Habits = () => {
+
   const [modalHabitsOpen, setModalHabitsOpen] = useState(false);
   const [isModalGoalOpen, setIsModalGoalOpen] = useState(false);
 
@@ -22,6 +23,7 @@ const Habits = () => {
   }, []);
 
   console.log(habits);
+
 
   return (
     <Container>
@@ -61,6 +63,7 @@ const Habits = () => {
         setIsOpen={setIsModalGoalOpen}
         isOpen={isModalGoalOpen}
       ></ModalGoals>
+
     </Container>
   );
 };

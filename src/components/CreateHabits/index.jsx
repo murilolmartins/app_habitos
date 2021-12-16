@@ -10,8 +10,10 @@ import { Container, Errors } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 
 const CreateHabits = ({ isOpen, setIsOpen }) => {
+
   const { createHabits, editHabits, isNotCreatedHabits } =
     useContext(HabitsContext);
+
 
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
