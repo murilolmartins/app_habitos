@@ -7,10 +7,14 @@ export const GroupsContext = createContext();
 const GroupsProvider = ({children})=>{
   const [isNotCreatedGroup,setIsNotCreatedGroup] = useState(true);
   const [groupId,setGroupId] = useState(0);
+  const [actId,setActId] = useState(0);
   const [userGroupsList,setUserGroupsList] = useState([]);
   const [goalsList,setGoalsList] = useState([]);
   const [activitiesList,setActivities] = useState([]);
   const {token} = useContext(AuthContext);
+  const [isNotCreatedActivitie,setIsNotCreatedActivitie] = useState(false);
+  const [createActivitiesOpen, setCreateActivitiesOpen] = useState(false);
+  const [isCreated,setIsCreated] = useState(false);
   const myGroups = ()=>{
     api.get(`/groups/subscriptions/`,{headers:
       {Authorization:`Bearer ${token}`}}).then(res=>{
@@ -47,7 +51,7 @@ const GroupsProvider = ({children})=>{
     }).then(response=>toast.success('Você saiu do grupo!')).catch(err=>toast.error('Você não está nesse grupo!'));
   }
   return (
-    <GroupsContext.Provider value={{createGroup,updateGroup,subscribeOnGroup,isNotCreatedGroup,setIsNotCreatedGroup,unsubscribe,myGroups,userGroupsList,setGroupId,groupId,setGoalsList}}>
+    <GroupsContext.Provider value={{createGroup,updateGroup,subscribeOnGroup,isNotCreatedGroup,setIsNotCreatedGroup,unsubscribe,myGroups,userGroupsList,setGroupId,groupId,setGoalsList,actId,setActId,createActivitiesOpen,setCreateActivitiesOpen,setIsNotCreatedActivitie,isNotCreatedActivitie,isCreated,setIsCreated}}>
       {children}
     </GroupsContext.Provider>
   );

@@ -48,7 +48,7 @@ export const Container = styled.div`
     flex-direction:column;
     justify-content: space-around;
     align-items: center;
-    height:200px;
+    height:220px;
     width: 99%;
     background-color:rgba(103, 22, 123, 0.4);
     border-radius: 5px;
@@ -101,6 +101,7 @@ export const ContainerInfo = styled.div`
         padding: 0px 15px;
         width: 130px;
         height: 40px;
+        margin-left:10px;
         background: #67167B;
         border-radius: 8px;
         color: white;
@@ -119,11 +120,12 @@ export const ContainerInfo = styled.div`
 export const Button = styled.button`
   width:26px;
   height:26px;
-  border-radius:10px;
+  border-radius:8px;
   border:none;
   align-items: center;
   justify-content: center;
   display:flex ;
+  color:white;
   background:#67167B;
   margin-left:4px;
 `;
@@ -133,12 +135,18 @@ display:flex;
 align-items:center;
 height:25px;
 padding:4px;
+justify-content:center;
 h3{
   font-size:16px;
 }
 `
 export const ContainerCards = styled.div`
 display:flex;
-justify-content:space-between;
+justify-content:space-around;
 width:100%;
+align-items:center;
 `
+export const DivSelect = styled.div`
+  display:flex;
+  align-items:center;
+`;

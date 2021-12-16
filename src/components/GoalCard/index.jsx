@@ -19,7 +19,7 @@ const GoalCard = ({goal})=>{
         <div>
         <EditIcon onClick={()=>{
           setGoalId(id);
-          setIsNotCreatedGoal(false);
+          setIsNotCreatedGoal(true);
           setIsModalGoalOpen(true);
           }}></EditIcon>
         </div>

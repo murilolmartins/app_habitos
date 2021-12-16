@@ -7,6 +7,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   color: white;
+  margin-bottom: 10px;
 
   header {
     display: flex;
@@ -19,11 +20,14 @@ const Container = styled.div`
       color: #8a8484;
       background: white;
       width: 30%;
-      font-size: 20px;
+      font-size: 13px;
       border-radius: 10px;
       height: 70%;
       display: flex;
       align-items: center;
+      @media (min-width: 450px) {
+        font-size: 20px;
+      }
       p {
         padding-left: 10px;
         span {
@@ -44,11 +48,14 @@ const Container = styled.div`
       color: #8a8484;
       background: white;
       width: 30%;
-      font-size: 20px;
+      font-size: 10px;
       border-radius: 10px;
       height: 70%;
       display: flex;
       align-items: center;
+      @media (min-width: 450px) {
+        font-size: 20px;
+      }
       p {
         padding-left: 10px;
         span {

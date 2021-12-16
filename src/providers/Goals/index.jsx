@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useGroups } from "./../Groups/index";
 export const GoalsContext = createContext();
 export const GoalsProvider = ({ children }) => {
-  const [isNotCreatedGoal, setIsNotCreatedGoal] = useState(false);
+  const [isNotCreatedGoal, setIsNotCreatedGoal] = useState(true);
   const { token } = useContext(AuthContext);
   const [goalId, setGoalId] = useState(0);
   const { groupId } = useGroups();

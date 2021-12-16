@@ -2,18 +2,23 @@ import AuthProvider from "./Auth";
 import HabitsContext from "./IndividualsHabits/index";
 import UserProvider from "./User";
 import { GoalsProvider } from "./Goals";
-import GroupsProvider from "./Groups";
 import HabitsProvider from "./IndividualsHabits";
+import { ActivitiesProvider } from "./Activities";
+import GroupsProvider from "./Groups";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
       <UserProvider>
-        <GroupsProvider>
-          <GoalsProvider>
-            <HabitsProvider> {children}</HabitsProvider>
-          </GoalsProvider>
-        </GroupsProvider>
+        <HabitsProvider>
+          <GroupsProvider>
+            <GoalsProvider>
+              <ActivitiesProvider>
+                <HabitsProvider> {children}</HabitsProvider>
+              </ActivitiesProvider>
+            </GoalsProvider>
+          </GroupsProvider>
+        </HabitsProvider>
       </UserProvider>
     </AuthProvider>
   );

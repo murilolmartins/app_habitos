@@ -11,13 +11,14 @@ import ModalUser from './../../components/ModalUser';
 import GroupCard from './../../components/GroupsCard/index';
 import {useGroups} from './../../providers/Groups/index';
 import {useGoals} from './../../providers/Goals/index';
+import {useActivities} from './../../providers/Activities';
+import CreateActivities from './../../components/CreateActivities/index';
 const Groups = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const {isModalGoalOpen, setIsModalGoalOpen} = useGoals();
- 
   const {userGroupsList} = useGroups();
-  
+  const {setCreateActivitiesOpen,createActivitiesOpen,setIsNotCreatedGroup} = useGroups();
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
@@ -25,7 +26,9 @@ const Groups = () => {
         <header>
           <div className="header">
             <h2>Meus grupos</h2>
-            <Button onClick={() => setIsModalGroupOpen(true)}>
+            <Button onClick={() => {
+              setIsNotCreatedGroup(false)
+              setIsModalGroupOpen(true)}}>
               <AddIcon></AddIcon>
             </Button>
           </div>
@@ -47,6 +50,10 @@ const Groups = () => {
       ></ModalGroup>
        <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen}></ModalGoals>
        <ModalUser setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen}/>
+       <CreateActivities
+        setIsOpen={setCreateActivitiesOpen}
+        isOpen={createActivitiesOpen}
+      ></CreateActivities>
     </Container>
   );
 };

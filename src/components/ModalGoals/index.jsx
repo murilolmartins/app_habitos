@@ -9,8 +9,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
 import {useGoals} from './../../providers/Goals/index';
 import {useEffect} from 'react'
+import { useActivities } from "../../providers/Activities";
 const ModalGoals = ({ isOpen, setIsOpen , group }) => {
-  const {createGoals,updateGoalData,updateGoalAchieved,deleteGoal,isNotCreatedGoal} = useGoals();
+  const {createGoals,updateGoalData,updateGoalAchieved,deleteGoal,isNotCreatedGoal,setIsNotCreatedGoal} = useGoals();
+
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
     difficulty: yup.string().required("Dificuldade obrigatória"),
@@ -27,10 +29,13 @@ const ModalGoals = ({ isOpen, setIsOpen , group }) => {
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
         <header>
-          {isNotCreatedGoal?<h1>Criar meta</h1>:<h1>Atualizar meta</h1>}
-          <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
+          {isNotCreatedGoal?<h1>Atualizar meta</h1>:<h1>Criar meta</h1>}
+          <CloseIcon onClick={() => {
+            
+            setIsNotCreatedGoal(true);
+            setIsOpen(false)}}></CloseIcon>
         </header>
-        <form onSubmit={isNotCreatedGoal?handleSubmit(createGoals):handleSubmit(updateGoalData)}>
+        <form onSubmit={isNotCreatedGoal?handleSubmit(updateGoalData):handleSubmit(createGoals)}>
             <Errors>{errors.title?.message}</Errors>
             <Input placeholder="Titulo" register={register} name="title"></Input>
           
@@ -46,12 +51,12 @@ const ModalGoals = ({ isOpen, setIsOpen , group }) => {
               <option value="Dificil">Dificil</option>
             </select>
           </div>
-          <Button type="submit">{isNotCreatedGoal?'Cadastrar':'Atualizar'}</Button>
+          <Button type="submit">{isNotCreatedGoal?'Atualizar':'Cadastrar'}</Button>
         </form>
-          <ButtonsUpdate>
+          {isNotCreatedGoal&&<ButtonsUpdate>
             <Button onClick={()=>updateGoalAchieved()}>Alcançado</Button>
             <Button onClick={()=>deleteGoal()}>Deletar</Button>
-          </ButtonsUpdate>
+          </ButtonsUpdate>}
       </Container>
     </Modal>
   );
