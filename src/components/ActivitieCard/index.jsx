@@ -12,7 +12,7 @@ const ActivitieCard = ({activitie})=>{
  const timetwo = time.replace(/[-]+/g,'/');
  const timeFinal = timetwo.replace(/[Z]+/g,'H')
  useEffect(()=>{
-    
+    console.log(activitie.realization_time)
     setActId(id)
   },[id, setActId]);
 
