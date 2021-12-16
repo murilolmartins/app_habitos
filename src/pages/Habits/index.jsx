@@ -9,12 +9,9 @@ import { HabitsContext } from "../../providers/IndividualsHabits";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/Button";
+import ModalUser from "../../components/ModalUser";
 
 const Habits = () => {
-
-  const [createHabitsOpen, setCreateHabitsOpen] = useState(true);
-  const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
-  
 
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const { habits } = useContext(HabitsContext);
@@ -42,9 +39,7 @@ const Habits = () => {
       </SmallContainer>
       <MobileFooter isDashboard name="habits"></MobileFooter>
       <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
-
-      <ModalGoals setIsOpen={setIsModalGoalOpen} isOpen={isModalGoalOpen}></ModalGoals>
-
+      <ModalUser setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen}/>
     </Container>
   );
 };

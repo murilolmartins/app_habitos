@@ -10,7 +10,7 @@ import {useGroups} from './../../providers/Groups/index';
 import {useEffect} from 'react'
 const ModalGroup = ({ isOpen, setIsOpen }) => {
  
-  const {createGroup,isNotCreatedGroup,updateGroup,subscribeOnGroup,unsubscribe} = useGroups();
+  const {createGroup,isNotCreatedGroup,updateGroup,subscribeOnGroup,unsubscribe,myGroups} = useGroups();
   const schema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     description: yup.string().required("Descrição obrigatória"),
@@ -24,9 +24,10 @@ const ModalGroup = ({ isOpen, setIsOpen }) => {
     resolver: yupResolver(schema),
   });
   useEffect(()=>{
-    subscribeOnGroup()
-    unsubscribe()
-  },[subscribeOnGroup])
+    // subscribeOnGroup();
+    // unsubscribe();
+    myGroups()
+  },[subscribeOnGroup,unsubscribe,myGroups])
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>

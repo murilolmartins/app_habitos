@@ -1,7 +1,7 @@
 import Modal from "../Modal";
 import Input from "../Input";
 import Button from "../Button";
-import { Container, Errors } from "./style";
+import { Container, Errors ,ButtonsUpdate} from "./style";
 import {ContainerInput} from './../RegisterForm/style';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,8 +9,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
 import {useGoals} from './../../providers/Goals/index';
 import {useEffect} from 'react'
-const ModalGoals = ({ isOpen, setIsOpen, isNotCreatedGoal , group }) => {
-  const {createGoals,updateGoalData,updateGoalAchieved,deleteGoal} = useGoals();
+const ModalGoals = ({ isOpen, setIsOpen , group }) => {
+  const {createGoals,updateGoalData,updateGoalAchieved,deleteGoal,isNotCreatedGoal} = useGoals();
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
     difficulty: yup.string().required("Dificuldade obrigatória"),
@@ -22,9 +22,7 @@ const ModalGoals = ({ isOpen, setIsOpen, isNotCreatedGoal , group }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  useEffect(()=>{
-    updateGoalAchieved()
-  },[])
+
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
@@ -50,6 +48,10 @@ const ModalGoals = ({ isOpen, setIsOpen, isNotCreatedGoal , group }) => {
           </div>
           <Button type="submit">{isNotCreatedGoal?'Cadastrar':'Atualizar'}</Button>
         </form>
+          <ButtonsUpdate>
+            <Button onClick={()=>updateGoalAchieved()}>Alcançado</Button>
+            <Button onClick={()=>deleteGoal()}>Deletar</Button>
+          </ButtonsUpdate>
       </Container>
     </Modal>
   );

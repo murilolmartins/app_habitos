@@ -5,15 +5,28 @@ import {toast} from 'react-toastify';
 export const GroupsContext = createContext();
 
 const GroupsProvider = ({children})=>{
-  const [isNotCreatedGroup,setIsNotCreatedGroup] = useState(false);
-  const [groupId,setGroupId] = useState(991)
+  const [isNotCreatedGroup,setIsNotCreatedGroup] = useState(true);
+  const [groupId,setGroupId] = useState(0);
+  const [userGroupsList,setUserGroupsList] = useState([]);
+  const [goalsList,setGoalsList] = useState([]);
+  const [activitiesList,setActivities] = useState([]);
   const {token} = useContext(AuthContext);
+  const myGroups = ()=>{
+    api.get(`/groups/subscriptions/`,{headers:
+      {Authorization:`Bearer ${token}`}}).then(res=>{
+        
+        setUserGroupsList([...res.data]);
+    }).catch(err=>console.log(err))
+  };
+ 
 
   const createGroup = (data)=>{
     api.post('/groups/',data,{
       headers:
       {Authorization:`Bearer ${token}`}
-    }).then(response=>toast.success('Grupo criado!')).catch(err=>console.log(err));
+    }).then(response=>{
+      toast.success('Grupo criado!')
+    }).catch(err=>console.log(err));
   };
   const updateGroup = (data)=>{
     api.patch(`/groups/${groupId}/`,data,{
@@ -28,13 +41,13 @@ const GroupsProvider = ({children})=>{
       headers: { Authorization: `Bearer ${token}` },
     }).then(response=>toast.success('Você foi inscrito!')).catch(err=>toast.error('Você já está nesse grupo!'));
   };
-  const unsubscribe = ()=>{
-    api.delete(`/groups/${groupId}/unsubscribe/`,{  
+  const unsubscribe = (id)=>{
+    api.delete(`/groups/${id}/unsubscribe/`,{  
       headers: { Authorization: `Bearer ${token}` },
     }).then(response=>toast.success('Você saiu do grupo!')).catch(err=>toast.error('Você não está nesse grupo!'));
   }
   return (
-    <GroupsContext.Provider value={{createGroup,updateGroup,subscribeOnGroup,isNotCreatedGroup,setIsNotCreatedGroup,unsubscribe}}>
+    <GroupsContext.Provider value={{createGroup,updateGroup,subscribeOnGroup,isNotCreatedGroup,setIsNotCreatedGroup,unsubscribe,myGroups,userGroupsList,setGroupId,groupId,setGoalsList}}>
       {children}
     </GroupsContext.Provider>
   );
