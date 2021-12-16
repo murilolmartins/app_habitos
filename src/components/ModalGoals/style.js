@@ -65,4 +65,7 @@ export const ButtonsUpdate = styled.div`
 margin-top:10px;
   display:flex;
   justify-content: space-between;
+  button{
+    margin:8px;
+  }
 `;
