@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+export const slideToRight = keyframes`
+  from{
+    transform:translateX(-100px);
+    opacity:0;
+  }
+  to{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -18,6 +28,7 @@ export const SmallContainer = styled.div`
   .background_img {
     display: none;
     width: 50%;
+    animation: ${slideToRight} 1s ease-in-out;
     @media (min-width: 1100px) {
       display: flex;
       align-items: center;

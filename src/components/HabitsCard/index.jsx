@@ -29,7 +29,6 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
         ></EditIcon>
         <CloseIcon
           onClick={() => {
-            console.log(habit);
             deleteHabits(habit);
           }}
         ></CloseIcon>

@@ -27,8 +27,6 @@ export const GoalsProvider = ({ children }) => {
         toast.success("Objetivo criado!");
       })
       .catch((err) => {
-        console.log(newData);
-        console.log(err);
         toast.error("erro");
       });
   };
@@ -74,7 +72,7 @@ export const GoalsProvider = ({ children }) => {
         setGoalsOnGroup,
         isModalGoalOpen,
         setIsModalGoalOpen,
-        setGoalId
+        setGoalId,
       }}
     >
       {children}
