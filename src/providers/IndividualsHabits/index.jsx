@@ -15,9 +15,6 @@ const HabitsProvider = ({ children }) => {
 
   const [habitsInfo, setHabitsInfo] = useState([]);
   const [habitId, setHabitId] = useState(0);
-  const [achievedInfo, setAchievedInfo] = useState({
-    achieved: false,
-  });
 
   const [habits, setHabits] = useState([]);
 
@@ -121,8 +118,6 @@ const HabitsProvider = ({ children }) => {
         isNotCreatedHabits,
         setIsNotCreatedHabits,
         habits,
-        achievedInfo,
-        setAchievedInfo,
         inputText,
         setInputText,
         habitsSearch,

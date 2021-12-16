@@ -5,16 +5,14 @@ import { HabitsContext } from "../../providers/IndividualsHabits";
 import CloseIcon from "@mui/icons-material/Close";
 
 const HabitsCard = ({ habit, setModalHabitsOpen }) => {
-  const { deleteHabits, achievedInfo, setAchievedInfo, editHabits, setHabitId } =
-    useContext(HabitsContext);
+  const { deleteHabits, editHabits, setHabitId } = useContext(HabitsContext);
 
-  const [checked, setChecked] = useState(false);  
+  const [checked, setChecked] = useState(() => habit.achieved);
 
   const handleCheckboxChange = (e) => {
     setChecked(!checked);
-    setAchievedInfo({ ...achievedInfo, achieved: !checked});    
-    editHabits(achievedInfo);
-  };  
+    editHabits({ achieved: !checked });
+  };
 
   return (
     <Container checked={checked}>
@@ -22,7 +20,7 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
         onClick={(e) => {
           let habitSection = document.querySelector(`.h${habit.id}`);
           habitSection.classList.toggle("hidden");
-          setHabitId(habit.id)
+          setHabitId(habit.id);
         }}
       >
         <h2>{habit.title}</h2>
@@ -53,7 +51,6 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
           size="large"
           checked={checked}
           onChange={handleCheckboxChange}
-         
         />
       </section>
     </Container>
