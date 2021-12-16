@@ -14,6 +14,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: flex-start;
     width: inherit;
+    height: inherit;
   }
 `;
 
@@ -22,6 +23,7 @@ export const SmallContainer = styled.div`
   flex-direction: column;
   width: 40%;
   max-width: 520px;
+  height: 90%;
   flex-grow: 1;
   margin-top: 20px;
   background: #ffe2cd;
@@ -78,5 +80,5 @@ export const SmallContainer = styled.div`
 `;
 
 export const SmallContainerRight = styled(SmallContainer)`
-  background-color: purple;
+  background-color: rgba(103, 22, 123, 0.4);
 `;

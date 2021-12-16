@@ -25,8 +25,7 @@ const HabitsProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log("Hábito Capturados!");
-        localStorage.setItem("@AppHabits:UserHabits", JSON.stringify(res.data));
+        setHabits(res.data);
       })
       .catch((err) => {
         console.log(err);

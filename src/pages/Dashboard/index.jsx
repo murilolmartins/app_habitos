@@ -3,8 +3,8 @@ import MobileFooter from "../../components/MobileFooter";
 import CreateHabits from "../../components/CreateHabits";
 
 import { Container, SmallContainer, SmallContainerRight } from "./style";
-import { useContext, useState } from "react";
-import HabitsCard from "../../components/HabitsCard";
+import { useContext, useEffect, useState } from "react";
+import DashboardHabitsCard from "../../components/DashboardHabitsCards";
 import { HabitsContext } from "../../providers/IndividualsHabits";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
@@ -15,10 +15,10 @@ const Dashboaord = () => {
   const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
 
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
-  const { getHabits } = useContext(HabitsContext);
+  const { habits, getHabits } = useContext(HabitsContext);
 
-  const userHabits = getHabits();
-  console.log(userHabits);
+  useEffect(() => getHabits(), []);
+
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
@@ -38,11 +38,12 @@ const Dashboaord = () => {
               </Button>
             </div>
           </header>
-          {JSON.parse(localStorage.getItem("@AppHabits:UserHabits")).map(
-            (habit) => (
-              <HabitsCard habit={habit}></HabitsCard>
-            )
-          )}
+          {habits.map((habit, index) => (
+            <DashboardHabitsCard
+              key={index}
+              habit={habit}
+            ></DashboardHabitsCard>
+          ))}
         </SmallContainer>
         <SmallContainerRight>
           <header>
