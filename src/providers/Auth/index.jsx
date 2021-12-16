@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem("@AppToken", JSON.stringify(response.data.access));
         setToken(JSON.parse(localStorage.getItem("@AppToken")));
         toast.success("Bem Vind@!");
-        history.push("/habits");
+        history.push("/dashboard"); //alterado para dashboard
       })
       .catch((err) => {
         toast.error("Usuario ou senha incorretos!");

@@ -11,11 +11,25 @@ const HabitsProvider = ({ children }) => {
 
   const { id } = useContext(UserContext);
 
-
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(false);
 
   const [habits, setHabits] = useState([]);
 
+  const getHabits = () => {
+    api
+      .get("habits/personal/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log("Hábito Capturados!");
+        localStorage.setItem("@AppHabits:UserHabits", JSON.stringify(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const createHabits = (data) => {
     api
@@ -70,9 +84,9 @@ const HabitsProvider = ({ children }) => {
   };
 
   return (
-
     <HabitsContext.Provider
       value={{
+        getHabits,
         createHabits,
         editHabits,
         deleteHabits,
@@ -81,7 +95,6 @@ const HabitsProvider = ({ children }) => {
         habits,
       }}
     >
-
       {children}
     </HabitsContext.Provider>
   );
