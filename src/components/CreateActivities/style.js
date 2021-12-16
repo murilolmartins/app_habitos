@@ -6,7 +6,12 @@ export const Container = styled.div`
   header {
     display:flex;
     flex-direction:row;
-    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    justify-content: space-around;
+    svg{
+      cursor:pointer;
+    }
   }
   form p {
     color: red;
@@ -16,5 +21,10 @@ export const Container = styled.div`
     width:280px;
     padding-left:15px;
     padding-right:15px;
+  }
+  form{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
   }
 `;

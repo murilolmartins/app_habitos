@@ -13,6 +13,7 @@ export const Container = styled.div`
     svg {
       align-self: center;
       margin-left: 100px;
+      cursor:pointer;
     }
     h1 {
       text-align: center;

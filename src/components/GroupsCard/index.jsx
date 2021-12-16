@@ -9,7 +9,7 @@ import GoalCard from "./../GoalCard";
 import ActivitieCard from "./../ActivitieCard";
 import { useEffect ,useContext} from "react";
 import AddIcon from "@mui/icons-material/Add";
-import { Button, Add1, ContainerCards,DivSelect } from "./styles";
+import { Button, Add1, ContainerCards,DivSelect,DivCateg,SairGrupo } from "./styles";
 import api from './../../services/api';
 import {AuthContext} from './../../providers/Auth/index';
 const GroupCard = ({ group, isOpen, id }) => {
@@ -25,6 +25,7 @@ const GroupCard = ({ group, isOpen, id }) => {
     unsubscribe,
     setGoalsList,
     setIsNotCreatedActivitie
+    
   } = useGroups();
   const {
     goalsOnGroup,
@@ -76,48 +77,52 @@ const GroupCard = ({ group, isOpen, id }) => {
           <DivSelect>
             <label>Selecionar filtro:</label>
             <select name="difficulty" id="status-select" onChange={(e)=>setFilterGoalOrActivities(e.target.value)}>
-              <option value="Activities">Activities</option>
-              <option value="Goals">Goals</option>
+              <option value="Atividades">Atividades</option>
+              <option value="Meta">Meta</option>
             </select>
           </DivSelect>
 
-          <div>
+          <DivCateg>
             <p>
               Categoria: <span>{group.category}</span>
             </p>
-          </div>
+          </DivCateg>
+
+          <SairGrupo>
+          <span>Sair do grupo</span>
           <CancelPresentationIcon
             onClick={() => {
               setGroupId(id);
               unsubscribe(id);
             }}
           />
+          </SairGrupo>
         </ContainerInfo>
         <ContainerCards>
-          <Cards isHidden>
-           { filterGoalOrActivities==='Goals'?(<Add1>
-              <h3>Adicionar goal</h3>
+          <Cards isHidden mobile>
+           { filterGoalOrActivities==='Meta'?(<Add1>
+             
               <Button
                 onClick={() => {
                   setIsNotCreatedGoal(false);
                   setIsModalGoalOpen(true);
                 }}
               >
-                <AddIcon></AddIcon>
+                Adicionar meta
               </Button>
             </Add1>):
             (<Add1>
-              <h3>Adicionar atividade</h3>
+              
               <Button onClick={() => {
                 setIsNotCreatedActivitie(false);
                 setCreateActivitiesOpen(true)}}>
-                <AddIcon></AddIcon>
+                Adicionar atividade
               </Button>
             </Add1>)}
           </Cards>
 
           <Cards>
-            {filterGoalOrActivities==='Goals'?(goal.map((goal, index) => {
+            {filterGoalOrActivities==='Meta'?(goal.map((goal, index) => {
               return <GoalCard key={index} goal={goal}></GoalCard>;
             })):(activities.map((activitie, index) => {
               return <ActivitieCard key={index} activitie={activitie}></ActivitieCard>;

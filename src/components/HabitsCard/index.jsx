@@ -1,18 +1,26 @@
 import Container from "./style";
-import EditIcon from "@mui/icons-material/Edit";
 import { Checkbox } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { HabitsContext } from "../../providers/IndividualsHabits";
 import CloseIcon from "@mui/icons-material/Close";
 
 const HabitsCard = ({ habit, setModalHabitsOpen }) => {
-  const { setIsNotCreatedHabits, deleteHabits } = useContext(HabitsContext);
+  const { deleteHabits, editHabits, setHabitId } = useContext(HabitsContext);
+
+  const [checked, setChecked] = useState(() => habit.achieved);
+
+  const handleCheckboxChange = (e) => {
+    setChecked(!checked);
+    editHabits({ achieved: !checked });
+  };
+
   return (
-    <Container>
+    <Container checked={checked}>
       <header
         onClick={(e) => {
           let habitSection = document.querySelector(`.h${habit.id}`);
           habitSection.classList.toggle("hidden");
+          setHabitId(habit.id);
         }}
       >
         <h2>{habit.title}</h2>
@@ -21,15 +29,8 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
             Frequência: <span>{habit.frequency}</span>
           </p>
         </div>
-        <EditIcon
-        //   onClick={() => {
-        //     setIsNotCreatedHabits(false);
-        //     setModalHabitsOpen(true);
-        //   }}
-        ></EditIcon>
         <CloseIcon
           onClick={() => {
-            console.log(habit);
             deleteHabits(habit);
           }}
         ></CloseIcon>
@@ -45,7 +46,12 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
             Categoria: <span>{habit.category}</span>
           </p>
         </div>
-        <Checkbox color="success" size="large" />
+        <Checkbox
+          color="success"
+          size="large"
+          checked={checked}
+          onChange={handleCheckboxChange}
+        />
       </section>
     </Container>
   );

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const Container = styled.div`
-  width:290px;
-  height:90px;
+  /* width:290px; */
+  height:82px;
   background:white;
   color:black;
   border-radius:10px;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content:space-around;
   align-items: center;
   margin:10px 10px;
-  background-color:#67167B;
+  background-color:${props=>props.achieved===true?'#6e477a':'#67167B'};
   color:white;
   div{
     p{

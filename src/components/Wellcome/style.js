@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+export const slideToLeft = keyframes`
+  from{
+    transform:translateX(100px);
+    opacity:0;
+  }
+  to{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -7,6 +17,7 @@ const Container = styled.div`
   justify-content: center;
   text-align: center;
   padding: 0px 5px;
+  animation: ${slideToLeft} 1s ease-in-out;
 
   @media (min-width: 400px) {
     padding: 0px 10px;

@@ -5,13 +5,13 @@ import {useGoals} from './../../providers/Goals';
 import {useEffect} from 'react'
 const GoalCard = ({goal})=>{
   const {id} = goal;
-  const { setIsModalGoalOpen,setIsNotCreatedGoal,setGoalId} = useGoals();
-
+  const { setIsModalGoalOpen,setIsNotCreatedGoal,setGoalId,isAchieved} = useGoals();
+  
   useEffect(()=>{
     setGoalId(id);
   },[id, setGoalId])
   return (
-    <Container>
+    <Container achieved={isAchieved}>
         <div>
           <h2>{goal.title}</h2>
           <p>{goal.difficulty}</p>

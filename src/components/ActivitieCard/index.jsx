@@ -7,9 +7,12 @@ import {useEffect,useState} from 'react'
 const ActivitieCard = ({activitie})=>{
   const {id} = activitie;
   const {setCreateActivitiesOpen,setIsNotCreatedActivitie,setActId} =useGroups();
- 
-
-  useEffect(()=>{
+  
+ const time = activitie.realization_time.replace(/[T]+/g,' ')
+ const timetwo = time.replace(/[-]+/g,'/');
+ const timeFinal = timetwo.replace(/[Z]+/g,'H')
+ useEffect(()=>{
+    console.log(activitie.realization_time)
     setActId(id)
   },[id, setActId]);
 
@@ -18,7 +21,7 @@ const ActivitieCard = ({activitie})=>{
     <Container>
         <div>
           <h2>{activitie.title}</h2>
-          <p>{activitie.realization_time}</p>
+          <p>{timeFinal}</p>
         </div>
         <div>
         <EditIcon onClick={()=>{
