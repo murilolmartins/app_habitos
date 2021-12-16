@@ -31,7 +31,7 @@ export const ActivitiesProvider = ({ children }) => {
   const updateActivity = ({ id, ...res }) => {
     api
       .patch(
-        `/activities/${id}`,
+        `/activities/${id}/`,
         { ...res },
         { headers: { Autorization: `Bearer ${token}` } }
       )
@@ -42,7 +42,7 @@ export const ActivitiesProvider = ({ children }) => {
   };
   const deleteActivity = ({ id }) => {
     api
-      .delete(`/activities/${id}`, {
+      .delete(`/activities/${id}/`, {
         headers: { Autorization: `Bearer${token}` },
       })
       .then((res) => toast.success("Atividade deletada com sucesso"))

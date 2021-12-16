@@ -4,6 +4,7 @@ import * as yup from "yup";
 import Modal from "../Modal";
 import Input from "../Input";
 import Button from "../Button";
+import CloseIcon from "@mui/icons-material/Close";
 import { Container } from "./style";
 import { useActivities } from "../../providers/Activities";
 
@@ -23,6 +24,8 @@ const CreateActivities = ({ isOpen, setIsOpen }) => {
       <Container onSubmit={handleSubmit(createActivity)}>
         <header>
           <h2>Criar Atividade</h2>
+          <CloseIcon onClick={()=> setIsOpen(false)}></CloseIcon>
+
         </header>
         <form>
           <Input placeholder="Titulo" register={register} name="title" />
