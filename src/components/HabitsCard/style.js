@@ -1,4 +1,16 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
+
+export const slideToDown = keyframes`
+  from{
+    transform:translateY(-10px);
+    opacity: 0;
+  }
+  to{
+    transform:translateY(0px);
+    opacity: 1;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -14,8 +26,11 @@ const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    background-color: #f2a167;
+    background-color: ${({ checked }) => (checked ? "#8f8f8f" : "#f2a167")};
     border-radius: 5px;
+    svg {
+      cursor: pointer;
+    }
     div {
       color: #8a8484;
       background: white;
@@ -42,8 +57,9 @@ const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 99%;
-    background-color: #ffa96a;
+    background-color: ${({ checked }) => (checked ? "#8f8f8f" : "#f2a167")};
     border-radius: 5px;
+    animation: ${slideToDown} 1s;
     div {
       color: #8a8484;
       background: white;
@@ -68,5 +84,7 @@ const Container = styled.div`
     display: none;
   }
 `;
+
+
 
 export default Container;

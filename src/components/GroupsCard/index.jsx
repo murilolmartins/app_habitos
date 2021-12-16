@@ -108,7 +108,7 @@ const GroupCard = ({ group, isOpen, id }) => {
                   setIsModalGoalOpen(true);
                 }}
               >
-                Adicionar goal
+                Adicionar meta
               </Button>
             </Add1>):
             (<Add1>

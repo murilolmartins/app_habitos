@@ -28,8 +28,6 @@ export const GoalsProvider = ({ children }) => {
         toast.success("Objetivo criado!");
       })
       .catch((err) => {
-        console.log(newData);
-        console.log(err);
         toast.error("erro");
       });
   };

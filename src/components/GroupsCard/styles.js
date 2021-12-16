@@ -1,4 +1,15 @@
-import styled,{css} from "styled-components";
+import styled, { css } from "styled-components";
+import { keyframes } from "styled-components";
+export const slideToDown = keyframes`
+  from{
+    transform:translateY(-10px);
+    opacity: 0;
+  }
+  to{
+    transform:translateY(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -7,14 +18,14 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   color: white;
-  margin-top:10px;
+  margin-top: 10px;
   header {
     box-sizing: border-box;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    background-color: #67167B;
+    background-color: #67167b;
     border-radius: 5px;
     margin-bottom:10px;
     :hover{
@@ -52,7 +63,7 @@ export const Container = styled.div`
           color: black;
           @media(max-width:768px) {
           font-size:1rem;
-   }
+          }    
         }
       }
     }
@@ -60,27 +71,28 @@ export const Container = styled.div`
 
   section {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height:220px;
+    height: 220px;
     width: 99%;
-    background-color:rgba(103, 22, 123, 0.4);
+    background-color: rgba(103, 22, 123, 0.4);
     border-radius: 5px;
     margin-top:-10px;
+    animation: ${slideToDown} 1s;
     @media(max-width:768px){
       height:auto;
     }
     svg{
      cursor:pointer;
-    }
    
+    }
+    
   }
   .hidden {
     display: none;
   }
 `;
-
 
 export const Cards = styled.div`
 overflow-y: ${props=>props.isHidden?css`hidden`:css`scroll`};
@@ -103,7 +115,7 @@ height:120px;
   height:${props=>props.mobile?'80px':'120px'}
  
 }
-  `
+` 
 export const ContainerInfo = styled.div`
    
       color: white;
@@ -211,7 +223,7 @@ export const SairGrupo = styled.div`
     @media(max-width:768px){
 
       font-size:16px;
-}
+    }
   }
   display:flex;
   align-items: center;
