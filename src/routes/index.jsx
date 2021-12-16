@@ -1,4 +1,5 @@
 import { Switch } from "react-router-dom";
+import CreateActivities from "../components/CreateActivities";
 import AboutUs from "../pages/AboutUs";
 import Groups from "../pages/Groups";
 import Habits from "../pages/Habits";
