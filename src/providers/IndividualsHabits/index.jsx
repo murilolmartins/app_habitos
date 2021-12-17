@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { AuthContext } from "../Auth";
@@ -13,9 +13,8 @@ const HabitsProvider = ({ children }) => {
 
   const [isNotCreatedHabits, setIsNotCreatedHabits] = useState(true);
 
-  const [habitsInfo, setHabitsInfo] = useState([]);
   const [habitId, setHabitId] = useState(0);
-  const [checkedHabit,setCheckedHabit] = useState(true);
+  const [checkedHabit, setCheckedHabit] = useState(true);
   const [inputText, setInputText] = useState("");
   const [habits, setHabits] = useState([]);
 
@@ -50,7 +49,6 @@ const HabitsProvider = ({ children }) => {
       .then((res) => {
         toast.success("Hábito criado com sucesso!");
 
-        setHabitsInfo(res.data);
         getHabits();
       })
       .catch((err) => {
@@ -72,7 +70,9 @@ const HabitsProvider = ({ children }) => {
       )
 
       .then((res) => {
-        toast.success(checkedHabit?"Hábito concluído!":"Hábito não concluido");
+        toast.success(
+          checkedHabit ? "Hábito concluído!" : "Hábito não concluido"
+        );
         getHabits();
       })
       .catch((err) => {
@@ -123,11 +123,8 @@ const HabitsProvider = ({ children }) => {
         inputText,
         setInputText,
         habitsSearch,
-
-        getHabits,
         setCheckedHabit,
-        checkedHabit
-
+        checkedHabit,
       }}
     >
       {children}

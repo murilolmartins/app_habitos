@@ -11,7 +11,6 @@ import ModalUser from "./../../components/ModalUser";
 import GroupCard from "./../../components/GroupsCard/index";
 import { useGroups } from "./../../providers/Groups/index";
 import { useGoals } from "./../../providers/Goals/index";
-import { useActivities } from "./../../providers/Activities";
 import ModalSearchGroups from "../../components/ModalSearchGroups";
 import CreateActivities from "./../../components/CreateActivities/index";
 const Groups = () => {
@@ -21,16 +20,12 @@ const Groups = () => {
   const [myGroupsSearch, setMyGroupsSearch] = useState("");
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
   const {
-    userGroupsList,
     setCreateActivitiesOpen,
     createActivitiesOpen,
     setIsNotCreatedGroup,
-    setUserGroupsList,
     myGroups,
     list,
-    setList,
   } = useGroups();
-
 
   // const searchList = (e) => {
   //   let newList = userGroupsList.filter((item) => item.name.includes(e));
@@ -40,7 +35,6 @@ const Groups = () => {
   useEffect(() => {
     myGroups();
   }, []);
-
 
   const searchList = (e) => {
     // const newList = userGroupsList.filter(e);
@@ -74,7 +68,6 @@ const Groups = () => {
             <input
               type="text"
               placeholder="Pesquisar grupo"
-
               // onChange={(e) => {
               //   searchList(e.target.value);
               // }}
@@ -82,7 +75,6 @@ const Groups = () => {
               onChange={(e) => {
                 setMyGroupsSearch(e.target.value);
               }}
-
             />
             <Button onClick={() => searchList(myGroupsSearch)}>Buscar</Button>
           </div>

@@ -6,10 +6,8 @@ import { Container, SmallContainer, SmallContainerRight } from "./style";
 import { useContext, useEffect, useState } from "react";
 import DashboardHabitsCard from "../../components/DashboardHabitsCards";
 import { HabitsContext } from "../../providers/IndividualsHabits";
-import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/Button";
-import { useGoals } from "../../providers/Goals";
 import { useGroups } from "../../providers/Groups";
 import DashboardGroupCard from "../../components/DashboardGroupCard";
 import ModalGroup from "../../components/ModalGroup";
@@ -17,35 +15,16 @@ import ModalGroup from "../../components/ModalGroup";
 const Dashboaord = () => {
   //habitos
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
-  const { habits, inputText, setInputText, habitsSearch, getHabits } =
-    useContext(HabitsContext);
+  const { habits, getHabits } = useContext(HabitsContext);
   //grupos
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
-  const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
-  const { myGroups, list, setList } = useGroups();
-  const {
-    setCreateActivitiesOpen,
-    createActivitiesOpen,
-    setIsNotCreatedGroup,
-  } = useGroups();
+  const { myGroups, list } = useGroups();
+  const { setIsNotCreatedGroup } = useGroups();
 
   useEffect(() => {
     getHabits();
     myGroups();
   }, []);
-
-  const [inputGroup, setInputGroup] = useState("");
-  const groupsSearch = (inputGroup) => {
-    if (inputGroup === "") {
-      myGroups();
-    } else {
-      const insensitiveCase = new RegExp(inputGroup, "i");
-      const filteredGroups = list.filter((group) =>
-        insensitiveCase.test(group.title || group.category)
-      );
-      setList(filteredGroups);
-    }
-  };
 
   return (
     <Container>

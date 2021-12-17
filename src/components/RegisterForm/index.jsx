@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import React from "react";
-import { InputErros, ContainerRegister, ContainerInput } from "./style.js";
+import { ContainerRegister, ContainerInput } from "./style.js";
 import { Title, Form, Errors } from "./../LoginForm/styles";
 import Input from "../Input/index";
 import Button from "../Button/index";

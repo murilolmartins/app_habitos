@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import api from "./../../services/api";
 import { AuthContext } from "./../Auth/index";
 import { toast } from "react-toastify";
@@ -12,7 +12,7 @@ export const GoalsProvider = ({ children }) => {
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const [isModalGoalOpen, setIsModalGoalOpen] = useState(false);
   const [goalsOnGroup, setGoalsOnGroup] = useState([]);
-  const [isAchieved,setIsAchieved] = useState(false);
+  const [isAchieved, setIsAchieved] = useState(false);
   const createGoals = (data) => {
     const newData = {
       ...data,
@@ -75,7 +75,7 @@ export const GoalsProvider = ({ children }) => {
         setIsModalGoalOpen,
         setGoalId,
         isAchieved,
-        setIsAchieved
+        setIsAchieved,
       }}
     >
       {children}

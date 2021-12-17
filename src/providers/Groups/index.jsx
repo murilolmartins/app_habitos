@@ -8,8 +8,6 @@ const GroupsProvider = ({ children }) => {
   const [isNotCreatedGroup, setIsNotCreatedGroup] = useState(true);
   const [groupId, setGroupId] = useState(0);
   const [actId, setActId] = useState(0);
-  const [goalsList, setGoalsList] = useState([]);
-  const [activitiesList, setActivities] = useState([]);
   const { token } = useContext(AuthContext);
   const [userGroupsList, setUserGroupsList] = useState([]);
   const [isNotCreatedActivitie, setIsNotCreatedActivitie] = useState(false);
@@ -18,9 +16,8 @@ const GroupsProvider = ({ children }) => {
   const [list, setList] = useState([]);
 
   const myGroups = () => {
-    console.log("Aqui");
     api
-      .get(`/groups/subscriptions/`, "", {
+      .get(`/groups/subscriptions/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -32,7 +29,6 @@ const GroupsProvider = ({ children }) => {
   useEffect(() => {
     myGroups();
   }, []);
-
 
   const createGroup = (data) => {
     api
@@ -94,7 +90,6 @@ const GroupsProvider = ({ children }) => {
         userGroupsList,
         setGroupId,
         groupId,
-        setGoalsList,
         actId,
         setActId,
         createActivitiesOpen,

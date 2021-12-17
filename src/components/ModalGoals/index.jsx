@@ -2,14 +2,11 @@ import Modal from "../Modal";
 import Input from "../Input";
 import Button from "../Button";
 import { Container, Errors, ButtonsUpdate } from "./style";
-import { ContainerInput } from "./../RegisterForm/style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
 import { useGoals } from "./../../providers/Goals/index";
-import { useEffect } from "react";
-import { useActivities } from "../../providers/Activities";
 const ModalGoals = ({ isOpen, setIsOpen, group }) => {
   const {
     createGoals,
@@ -18,7 +15,7 @@ const ModalGoals = ({ isOpen, setIsOpen, group }) => {
     deleteGoal,
     isNotCreatedGoal,
     setIsNotCreatedGoal,
-    setIsAchieved
+    setIsAchieved,
   } = useGoals();
 
   const schema = yup.object().shape({

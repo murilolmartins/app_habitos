@@ -1,11 +1,6 @@
 import Container from "./style";
-import { Checkbox } from "@mui/material";
-import { useContext } from "react";
-import { HabitsContext } from "../../providers/IndividualsHabits";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const DashboardHabitsCard = ({ habit, setModalHabitsOpen }) => {
-  const { setIsNotCreatedHabits, deleteHabits } = useContext(HabitsContext);
   return (
     <Container>
       <header

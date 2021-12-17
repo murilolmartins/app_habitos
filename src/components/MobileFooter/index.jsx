@@ -9,10 +9,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useHistory } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/Auth";
-import { UserContext } from "../../providers/User";
 
 const MobileFooter = ({ name, isDashboard = false }) => {
-  const { setUserModalOpen } = useContext(UserContext);
   const history = useHistory();
   const { handleLogOut } = useContext(AuthContext);
   const onView = (e) => {

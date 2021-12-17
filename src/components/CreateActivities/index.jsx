@@ -7,15 +7,23 @@ import Button from "../Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { Container } from "./style";
 import { useActivities } from "../../providers/Activities";
-import {useGroups} from './../../providers/Groups';
-import {ButtonsUpdate} from './../../components/ModalGoals/style';
+import { useGroups } from "./../../providers/Groups";
+import { ButtonsUpdate } from "./../../components/ModalGoals/style";
 const CreateActivities = ({ isOpen, setIsOpen }) => {
-  const { createActivity,updateActivity, deleteActivity,setIsNotCreatedActivitie} = useActivities();
-  const {isNotCreatedActivitie,isCreated,actId} = useGroups();
+  const {
+    createActivity,
+    updateActivity,
+    deleteActivity,
+    setIsNotCreatedActivitie,
+  } = useActivities();
+  const { isNotCreatedActivitie, actId } = useGroups();
 
   const schema = yup.object().shape({
     title: yup.string().required("Titulo obrigatório"),
-    realization_time: yup.string().required("Data Obrigatoria").max(16,'Máximo de 16 caracteres'),
+    realization_time: yup
+      .string()
+      .required("Data Obrigatoria")
+      .max(16, "Máximo de 16 caracteres"),
   });
   const {
     register,
@@ -24,13 +32,25 @@ const CreateActivities = ({ isOpen, setIsOpen }) => {
   } = useForm({ resolver: yupResolver(schema) });
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Container onSubmit={isNotCreatedActivitie?handleSubmit(updateActivity):handleSubmit(createActivity)}>
+      <Container
+        onSubmit={
+          isNotCreatedActivitie
+            ? handleSubmit(updateActivity)
+            : handleSubmit(createActivity)
+        }
+      >
         <header>
-          {isNotCreatedActivitie?(<h2>Atualizar Atividade</h2>):(<h2>Criar Atividade</h2>)}
-          <CloseIcon onClick={()=> {
-            setIsNotCreatedActivitie(false);
-            setIsOpen(false)}}></CloseIcon>
-
+          {isNotCreatedActivitie ? (
+            <h2>Atualizar Atividade</h2>
+          ) : (
+            <h2>Criar Atividade</h2>
+          )}
+          <CloseIcon
+            onClick={() => {
+              setIsNotCreatedActivitie(false);
+              setIsOpen(false);
+            }}
+          ></CloseIcon>
         </header>
         <form>
           <Input placeholder="Titulo" register={register} name="title" />
@@ -44,12 +64,15 @@ const CreateActivities = ({ isOpen, setIsOpen }) => {
           <p>{errors.realization_time?.message}</p>
           {/* <Input placeholder="group:" register={register} name="group" />
           <p>{errors.group?.message}</p> */}
-          <Button type="submit">{isNotCreatedActivitie?'Atualizar atividade':'Criar Atividade'}</Button>
+          <Button type="submit">
+            {isNotCreatedActivitie ? "Atualizar atividade" : "Criar Atividade"}
+          </Button>
         </form>
-       {isNotCreatedActivitie&&
-       <ButtonsUpdate>
-            <Button onClick={()=>deleteActivity(actId)}>Deletar</Button>
-          </ButtonsUpdate>}
+        {isNotCreatedActivitie && (
+          <ButtonsUpdate>
+            <Button onClick={() => deleteActivity(actId)}>Deletar</Button>
+          </ButtonsUpdate>
+        )}
       </Container>
     </Modal>
   );

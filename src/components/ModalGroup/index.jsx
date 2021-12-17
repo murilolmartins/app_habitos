@@ -7,16 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
 import { useGroups } from "./../../providers/Groups/index";
-import { useEffect } from "react";
 const ModalGroup = ({ isOpen, setIsOpen }) => {
-  const {
-    createGroup,
-    isNotCreatedGroup,
-    updateGroup,
-    subscribeOnGroup,
-    unsubscribe,
-    myGroups,
-  } = useGroups();
+  const { createGroup, isNotCreatedGroup, updateGroup } = useGroups();
   const schema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     description: yup.string().required("Descrição obrigatória"),

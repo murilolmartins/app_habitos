@@ -1,17 +1,23 @@
 import Container from "./style";
 import { Checkbox } from "@mui/material";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { HabitsContext } from "../../providers/IndividualsHabits";
 import CloseIcon from "@mui/icons-material/Close";
 
 const HabitsCard = ({ habit, setModalHabitsOpen }) => {
-  const { deleteHabits, editHabits, setHabitId,setCheckedHabit,checkedHabit } = useContext(HabitsContext);
+  const {
+    deleteHabits,
+    editHabits,
+    setHabitId,
+    setCheckedHabit,
+    checkedHabit,
+  } = useContext(HabitsContext);
 
   const [checked, setChecked] = useState(() => habit.achieved);
 
   const handleCheckboxChange = () => {
     setChecked(!checked);
-    setCheckedHabit(!checkedHabit)
+    setCheckedHabit(!checkedHabit);
     editHabits({ achieved: !checked });
   };
 
