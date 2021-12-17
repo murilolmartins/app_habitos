@@ -1,7 +1,7 @@
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
 import CreateHabits from "../../components/CreateHabits";
-import {UserContext} from './../../providers/User';
+import { UserContext } from "./../../providers/User";
 import { Container, SmallContainer } from "./style";
 import { useContext, useState, useEffect } from "react";
 import HabitsCard from "../../components/HabitsCard";
@@ -12,18 +12,14 @@ import Button from "../../components/Button";
 import ModalUser from "../../components/ModalUser";
 
 const Habits = () => {
-
-
   const [modalHabitsOpen, setModalHabitsOpen] = useState(false);
-  
+
   const { habits, inputText, setInputText, habitsSearch, getHabits } =
     useContext(HabitsContext);
-    const { user,setUserModalOpen} = useContext(UserContext);
+  const { user, setUserModalOpen } = useContext(UserContext);
   useEffect(() => {
     getHabits();
   }, []);
-
-  
 
   return (
     <Container>
@@ -58,10 +54,9 @@ const Habits = () => {
         ))}
       </SmallContainer>
       <MobileFooter isDashboard name="habits"></MobileFooter>
-     
-      <ModalUser setIsOpen={setUserModalOpen} isOpen={user}/>
+
+      <ModalUser setIsOpen={setUserModalOpen} isOpen={user} />
       <CreateHabits setIsOpen={setModalHabitsOpen} isOpen={modalHabitsOpen} />
-      
     </Container>
   );
 };

@@ -27,7 +27,7 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     background-color: ${({ checked }) => (checked ? "#8f8f8f" : "#f2a167")};
-  
+
     svg {
       cursor: pointer;
     }
@@ -58,7 +58,7 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     background-color: ${({ checked }) => (checked ? "#c9c7c7" : "#f2b990")};
-    
+
     animation: ${slideToDown} 1s;
     div {
       color: #8a8484;
@@ -84,7 +84,5 @@ const Container = styled.div`
     display: none;
   }
 `;
-
-
 
 export default Container;
