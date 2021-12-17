@@ -32,8 +32,8 @@ const Groups = () => {
   } = useGroups();
 
   const searchList = (e) => {
-    let newList = userGroupsList.filter((item) => item.name.includes(e));
-    newList.length === 0 ? setList([]) : setList(newList);
+    // const newList = userGroupsList.filter(e);
+    // setList(newList);
   };
   return (
     <Container>

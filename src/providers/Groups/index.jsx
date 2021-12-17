@@ -17,13 +17,10 @@ const GroupsProvider = ({ children }) => {
   const [isCreated, setIsCreated] = useState(false);
   const [list, setList] = useState([]);
 
-  useEffect(() => {
-    myGroups();
-  }, []);
-
   const myGroups = () => {
+    console.log("Aqui");
     api
-      .get(`/groups/subscriptions/`, {
+      .get(`/groups/subscriptions/`, "", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
