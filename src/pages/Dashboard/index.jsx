@@ -24,7 +24,7 @@ const Dashboaord = () => {
   useEffect(() => {
     getHabits();
     myGroups();
-  }, [myGroups, getHabits]);
+  });
 
   return (
     <Container>

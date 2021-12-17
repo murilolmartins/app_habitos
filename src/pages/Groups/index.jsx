@@ -34,7 +34,7 @@ const Groups = () => {
 
   useEffect(() => {
     myGroups();
-  }, [myGroups]);
+  });
 
   const searchList = (e) => {
     // const newList = userGroupsList.filter(e);

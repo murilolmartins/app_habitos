@@ -54,7 +54,7 @@ const GroupsProvider = ({ children }) => {
   };
   const subscribeOnGroup = (id) => {
     api
-      .post(`/groups/${id}/subscribe/`, "", {
+      .post(`/groups/${id}/subscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
