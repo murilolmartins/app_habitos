@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Container } from "./style";
 import logo from "../../assets/images/logo-ukifazer.png";
 import logout from "./../../assets/images/Logout.png";
@@ -6,23 +6,33 @@ import { useContext } from "react";
 import { AuthContext } from "./../../providers/Auth/index";
 import { UserContext } from "../../providers/User";
 import { HabitsContext } from "../../providers/IndividualsHabits";
+import { GroupsContext } from "../../providers/Groups";
+
 const DesktopHeader = ({ isDashBoard = false }) => {
+  const { myGroups } = useContext(GroupsContext);
   const { handleLogOut } = useContext(AuthContext);
   const { user, setUserModalOpen } = useContext(UserContext);
   const { getHabits } = useContext(HabitsContext);
+  const history = useHistory();
   return (
     <>
       {" "}
       {isDashBoard ? (
         <Container>
-          <figure>
+          <figure
+            onClick={() => {
+              history.push("dashboard");
+            }}
+          >
             <img src={logo} alt="Logo" />
           </figure>
           <div className="links">
+
+            <Link to="/habits">Hábitos</Link>
+
             <Link to="/aboutUs">Sobre nós</Link>
-            <Link to="/habits" onClick={getHabits}>
-              Hábitos
-            </Link>
+            
+
             <Link to="/groups">Grupos</Link>
             <div className="description">
               <h2>{user.username}</h2>

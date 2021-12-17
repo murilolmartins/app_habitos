@@ -24,8 +24,8 @@ const GroupsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setUserGroupsList([...res.data]);
-        setList([...res.data]);
+        // setUserGroupsList(res.data);
+        setList(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -41,6 +41,7 @@ const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         toast.success("Grupo criado!");
+        myGroups();
       })
       .catch((err) => console.log(err));
   };
@@ -49,7 +50,10 @@ const GroupsProvider = ({ children }) => {
       .patch(`/groups/${groupId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => toast.success("Atualizado com sucesso!"))
+      .then((response) => {
+        toast.success("Atualizado com sucesso!");
+        myGroups();
+      })
       .catch((err) => {
         toast.error("Necessário ser criador do grupo!");
         console.log(err);
@@ -60,7 +64,10 @@ const GroupsProvider = ({ children }) => {
       .post(`/groups/${id}/subscribe/`, "", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => toast.success("Você foi inscrito!"))
+      .then((response) => {
+        toast.success("Você foi inscrito!");
+        myGroups();
+      })
       .catch((err) => toast.error("Você já está nesse grupo!"));
   };
   const unsubscribe = (id) => {
@@ -68,7 +75,10 @@ const GroupsProvider = ({ children }) => {
       .delete(`/groups/${id}/unsubscribe/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => toast.success("Você saiu do grupo!"))
+      .then((response) => {
+        toast.success("Você saiu do grupo!");
+        myGroups();
+      })
       .catch((err) => toast.error("Você não está nesse grupo!"));
   };
   return (

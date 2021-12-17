@@ -26,17 +26,17 @@ const MobileFooter = ({ name, isDashboard = false }) => {
         <Container>
           <ul>
             <li
-              className={name === "habits" ? "active" : "habits"}
+              className={name === "dashboard" ? "active" : "dashboard"}
               onClick={(e) => {
                 onView(e);
-                history.push("/habits");
+                history.push("/dashboard");
               }}
             >
               <div className="box_icon">
                 <span className="icon">
                   <HomeIcon fontSize="large"></HomeIcon>
                 </span>
-                <span className="text">Habitos</span>
+                <span className="text">Home</span>
               </div>
             </li>
             <li
@@ -55,16 +55,17 @@ const MobileFooter = ({ name, isDashboard = false }) => {
               </div>
             </li>
             <li
+              className={name === "habits" ? "active" : "habits"}
               onClick={(e) => {
                 onView(e);
-                setUserModalOpen(true);
+                history.push("/habits");
               }}
             >
               <div className="box_icon">
                 <span className="icon">
                   <PersonIcon fontSize="large"></PersonIcon>
                 </span>
-                <span className="text">Perfil</span>
+                <span className="text">habitos</span>
               </div>
             </li>
             <li

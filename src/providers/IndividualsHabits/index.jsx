@@ -27,7 +27,7 @@ const HabitsProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        setHabits([...res.data]);
+        setHabits(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -112,6 +112,7 @@ const HabitsProvider = ({ children }) => {
   return (
     <HabitsContext.Provider
       value={{
+        getHabits,
         createHabits,
         editHabits,
         deleteHabits,
@@ -122,9 +123,11 @@ const HabitsProvider = ({ children }) => {
         inputText,
         setInputText,
         habitsSearch,
+
         getHabits,
         setCheckedHabit,
         checkedHabit
+
       }}
     >
       {children}

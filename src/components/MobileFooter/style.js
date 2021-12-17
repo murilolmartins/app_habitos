@@ -15,7 +15,8 @@ const Container = styled.footer`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  position: relative;
+  position: fixed;
+  bottom: 0px;
   @media (min-width: 760px) {
     display: none;
   }

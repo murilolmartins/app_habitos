@@ -31,7 +31,9 @@ export const Container = styled.div`
       }
     }
   }
-
+  figure:hover {
+    cursor: pointer;
+  }
   div {
     display: none;
     @media (min-width: 760px) {

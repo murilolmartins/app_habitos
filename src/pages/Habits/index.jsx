@@ -20,7 +20,12 @@ const Habits = () => {
   useEffect(() => {
     getHabits();
   }, []);
-
+  //   useEffect(() => {
+  //     myFunction();
+  //     return () => {
+  //       setState({}); // This worked for me
+  //     };
+  // }, []);
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
