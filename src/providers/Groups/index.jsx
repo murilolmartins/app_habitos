@@ -29,6 +29,10 @@ const GroupsProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    myGroups();
+  }, []);
+
 
   const createGroup = (data) => {
     api
