@@ -62,9 +62,7 @@ const Groups = () => {
                 setMyGroupsSearch(e.target.value);
               }}
             />
-            <Button onClick={() => searchList(myGroupsSearch.toLowerCase())}>
-              Buscar
-            </Button>
+            <Button onClick={() => searchList(myGroupsSearch)}>Buscar</Button>
           </div>
         </header>
         {list.map((group, index) => {
