@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Auth";
 import api from "./../../services/api";
 import { toast } from "react-toastify";
@@ -8,13 +8,18 @@ const GroupsProvider = ({ children }) => {
   const [isNotCreatedGroup, setIsNotCreatedGroup] = useState(true);
   const [groupId, setGroupId] = useState(0);
   const [actId, setActId] = useState(0);
-  const [userGroupsList, setUserGroupsList] = useState([]);
   const [goalsList, setGoalsList] = useState([]);
   const [activitiesList, setActivities] = useState([]);
   const { token } = useContext(AuthContext);
+  const [userGroupsList, setUserGroupsList] = useState([]);
   const [isNotCreatedActivitie, setIsNotCreatedActivitie] = useState(false);
   const [createActivitiesOpen, setCreateActivitiesOpen] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    myGroups();
+  }, []);
 
   const myGroups = () => {
     api
@@ -23,6 +28,7 @@ const GroupsProvider = ({ children }) => {
       })
       .then((res) => {
         setUserGroupsList([...res.data]);
+        setList([...res.data]);
       })
       .catch((err) => console.log(err));
   };
@@ -48,9 +54,9 @@ const GroupsProvider = ({ children }) => {
         console.log(err);
       });
   };
-  const subscribeOnGroup = () => {
+  const subscribeOnGroup = (id) => {
     api
-      .post(`/groups/${groupId}/subscribe/`, groupId, {
+      .post(`/groups/${id}/subscribe/`, "", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => toast.success("Você foi inscrito!"))
@@ -86,6 +92,9 @@ const GroupsProvider = ({ children }) => {
         isNotCreatedActivitie,
         isCreated,
         setIsCreated,
+        setUserGroupsList,
+        list,
+        setList,
       }}
     >
       {children}

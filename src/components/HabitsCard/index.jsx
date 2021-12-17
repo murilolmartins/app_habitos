@@ -9,7 +9,7 @@ const HabitsCard = ({ habit, setModalHabitsOpen }) => {
 
   const [checked, setChecked] = useState(() => habit.achieved);
 
-  const handleCheckboxChange = (e) => {
+  const handleCheckboxChange = () => {
     setChecked(!checked);
     editHabits({ achieved: !checked });
   };

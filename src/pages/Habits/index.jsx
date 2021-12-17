@@ -21,8 +21,6 @@ const Habits = () => {
     getHabits();
   }, []);
 
-  
-
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>

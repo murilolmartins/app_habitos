@@ -16,6 +16,7 @@ const HabitsProvider = ({ children }) => {
   const [habitsInfo, setHabitsInfo] = useState([]);
   const [habitId, setHabitId] = useState(0);
 
+  const [inputText, setInputText] = useState("");
   const [habits, setHabits] = useState([]);
 
   const getHabits = () => {
@@ -72,6 +73,7 @@ const HabitsProvider = ({ children }) => {
 
       .then((res) => {
         toast.success("Hábito concluído!");
+        getHabits();
       })
       .catch((err) => {
         toast.error("Não foi possível editar esse hábito");
@@ -95,17 +97,16 @@ const HabitsProvider = ({ children }) => {
       });
   };
 
-  const [inputText, setInputText] = useState("");
-
   const habitsSearch = (inputText) => {
     if (inputText === "") {
       getHabits();
+    } else {
+      const insensitiveCase = new RegExp(inputText, "i");
+      const filteredHabits = habits.filter((habit) =>
+        insensitiveCase.test(habit.title || habit.category)
+      );
+      setHabits(filteredHabits);
     }
-    const insensitiveCase = new RegExp(inputText, "i");
-    const filteredHabits = habits.filter((habit) =>
-      insensitiveCase.test(habit.title || habit.category)
-    );
-    setHabits(filteredHabits);
   };
 
   return (

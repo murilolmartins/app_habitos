@@ -26,11 +26,11 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     background-color: #67167b;
-    border-radius: 5px;
+    
     margin-bottom:10px;
     :hover{
       cursor:pointer;
-      outline:2px solid white;
+      outline:1px solid white;
     }
    @media(max-width:768px) {
      font-size:0.7rem;
@@ -75,9 +75,9 @@ export const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     height: 220px;
-    width: 99%;
+    width: 100%;
     background-color: rgba(103, 22, 123, 0.4);
-    border-radius: 5px;
+    
     margin-top:-10px;
     animation: ${slideToDown} 1s;
     @media(max-width:768px){
@@ -121,7 +121,7 @@ export const ContainerInfo = styled.div`
       color: white;
       background: #461e46;
       font-size: 20px;
-      border-radius: 10px;
+      
       width:100%;
       height: auto;
       display: flex;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
 import ModalGroup from "../../components/ModalGroup";
@@ -12,17 +12,28 @@ import GroupCard from "./../../components/GroupsCard/index";
 import { useGroups } from "./../../providers/Groups/index";
 import { useGoals } from "./../../providers/Goals/index";
 import { useActivities } from "./../../providers/Activities";
+import ModalSearchGroups from "../../components/ModalSearchGroups";
 import CreateActivities from "./../../components/CreateActivities/index";
 const Groups = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
+  const [isSearchGroupsOpen, setIsSearchGroupsOpen] = useState(false);
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
-  const { userGroupsList } = useGroups();
   const {
+    userGroupsList,
     setCreateActivitiesOpen,
     createActivitiesOpen,
     setIsNotCreatedGroup,
+    setUserGroupsList,
+    myGroups,
+    list,
+    setList,
   } = useGroups();
+
+  const searchList = (e) => {
+    let newList = userGroupsList.filter((item) => item.name.includes(e));
+    newList.length === 0 ? setList([]) : setList(newList);
+  };
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
@@ -38,15 +49,25 @@ const Groups = () => {
             >
               <AddIcon></AddIcon>
             </Button>
-          </div>
-          <div className="search">
-            <input type="text" placeholder="Pesquisar grupo" />
-            <Button>
+            <Button
+              onClick={() => {
+                setIsSearchGroupsOpen(true);
+              }}
+            >
               <SearchIcon></SearchIcon>
             </Button>
           </div>
+          <div className="search">
+            <input
+              type="text"
+              placeholder="Pesquisar grupo"
+              onChange={(e) => {
+                searchList(e.target.value);
+              }}
+            />
+          </div>
         </header>
-        {userGroupsList.map((group, index) => {
+        {list.map((group, index) => {
           return (
             <GroupCard
               id={group.id}
@@ -72,6 +93,10 @@ const Groups = () => {
         setIsOpen={setCreateActivitiesOpen}
         isOpen={createActivitiesOpen}
       ></CreateActivities>
+      <ModalSearchGroups
+        isOpen={isSearchGroupsOpen}
+        setIsOpen={setIsSearchGroupsOpen}
+      ></ModalSearchGroups>
     </Container>
   );
 };

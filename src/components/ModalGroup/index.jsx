@@ -6,11 +6,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CloseIcon from "@mui/icons-material/Close";
 import * as yup from "yup";
-import {useGroups} from './../../providers/Groups/index';
-import {useEffect} from 'react'
+import { useGroups } from "./../../providers/Groups/index";
+import { useEffect } from "react";
 const ModalGroup = ({ isOpen, setIsOpen }) => {
- 
-  const {createGroup,isNotCreatedGroup,updateGroup,subscribeOnGroup,unsubscribe,myGroups} = useGroups();
+  const {
+    createGroup,
+    isNotCreatedGroup,
+    updateGroup,
+    subscribeOnGroup,
+    unsubscribe,
+    myGroups,
+  } = useGroups();
   const schema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     description: yup.string().required("Descrição obrigatória"),
@@ -23,19 +29,25 @@ const ModalGroup = ({ isOpen, setIsOpen }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  useEffect(()=>{
+  useEffect(() => {
     // subscribeOnGroup();
     // unsubscribe();
-    myGroups()
-  },[subscribeOnGroup,unsubscribe,myGroups])
+    myGroups();
+  }, [subscribeOnGroup, unsubscribe, myGroups]);
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
         <header>
-          {isNotCreatedGroup ?   <h1>Editar grupo</h1>:<h1>Criar grupo</h1>}
+          {isNotCreatedGroup ? <h1>Editar grupo</h1> : <h1>Criar grupo</h1>}
           <CloseIcon onClick={() => setIsOpen(false)}></CloseIcon>
         </header>
-        <form onSubmit={isNotCreatedGroup?handleSubmit(updateGroup):handleSubmit(createGroup)}>
+        <form
+          onSubmit={
+            isNotCreatedGroup
+              ? handleSubmit(updateGroup)
+              : handleSubmit(createGroup)
+          }
+        >
           <Errors>{errors.name?.message}</Errors>
           <Input placeholder="Nome" register={register} name="name"></Input>
           <Errors>{errors.description?.message}</Errors>
@@ -51,7 +63,7 @@ const ModalGroup = ({ isOpen, setIsOpen }) => {
             name="category"
           ></Input>
           <Button type="submit">
-            {isNotCreatedGroup ?"Editar":  "Cadastrar" }
+            {isNotCreatedGroup ? "Editar" : "Cadastrar"}
           </Button>
         </form>
       </Container>
