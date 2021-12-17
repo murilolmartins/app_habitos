@@ -29,11 +29,11 @@ const ModalGroup = ({ isOpen, setIsOpen }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  useEffect(() => {
-    // subscribeOnGroup();
-    // unsubscribe();
-    myGroups();
-  }, [subscribeOnGroup, unsubscribe, myGroups]);
+  // useEffect(() => {
+  //   // subscribeOnGroup();
+  //   // unsubscribe();
+  //   // myGroups()
+  // }, [subscribeOnGroup, unsubscribe]);
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>

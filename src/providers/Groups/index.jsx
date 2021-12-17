@@ -16,10 +16,11 @@ const GroupsProvider = ({ children }) => {
   const [createActivitiesOpen, setCreateActivitiesOpen] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
   const [list, setList] = useState([]);
-  
+
   const myGroups = () => {
+    console.log("Aqui");
     api
-      .get(`/groups/subscriptions/`, {
+      .get(`/groups/subscriptions/`, "", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
