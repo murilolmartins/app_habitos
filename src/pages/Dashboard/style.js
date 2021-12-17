@@ -13,8 +13,9 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
     width: inherit;
-    height: inherit;
+    height: 85%;
   }
 `;
 
@@ -23,22 +24,44 @@ export const SmallContainer = styled.div`
   flex-direction: column;
   width: 40%;
   max-width: 520px;
-  height: 90%;
+  height: 100%;
   flex-grow: 1;
   margin-top: 20px;
   background: #ffe2cd;
   padding: 20px;
   margin: 20px;
   border-radius: 10px;
+
+  max-height: 90%;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #f2a167;
+    border-radius: 10px;
+    border: none;
+  }
+
   .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     h2 {
-      flex: 0.8;
+      /* flex: 1; */
+      width: 100%;
+      text-align: center;
+      color: #f2a167;
     }
     button {
-      width: 60px;
+      box-sizing: border-box;
+      width: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,7 +73,8 @@ export const SmallContainer = styled.div`
     justify-content: center;
     padding-bottom: 15px;
     button {
-      width: 100px;
+      box-sizing: border-box;
+      width: 72px;
       height: 40px;
       display: flex;
       align-items: center;
@@ -58,11 +82,11 @@ export const SmallContainer = styled.div`
     }
     input {
       font-family: "Overpass";
-      width: 280px;
+      width: 100%;
       height: 40px;
       background: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 5px;
       padding-left: 28px;
       font-size: 16px;
       margin-right: 10px;
@@ -81,4 +105,18 @@ export const SmallContainer = styled.div`
 
 export const SmallContainerRight = styled(SmallContainer)`
   background-color: rgba(103, 22, 123, 0.4);
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #67167b;
+  }
+
+  .header h2 {
+    color: #67167b;
+  }
+  .header button {
+    background-color: #67167b;
+  }
+  .search button {
+    background-color: #67167b;
+  }
 `;

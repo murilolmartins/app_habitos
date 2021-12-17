@@ -45,13 +45,6 @@ const Container = styled.div`
       }
     }
 
-    .buttons {
-      padding-right: 20px;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      width: 60px;
-    }
     /* .habitInfo {
       color: #8a8484;
       background: white;
@@ -71,6 +64,9 @@ const Container = styled.div`
         }
       }
     } */
+  }
+  header:hover {
+    cursor: pointer;
   }
 
   section {
@@ -99,6 +95,27 @@ const Container = styled.div`
           color: #eecf5f;
         }
       }
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      width: 60px;
+    }
+    .deleteIcon {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
+      padding: 3px;
+      background-color: gray;
+      border-radius: 5px;
+    }
+    .deleteIcon:hover {
+      cursor: pointer;
+      background-color: red;
     }
   }
   .hidden {

@@ -9,15 +9,32 @@ import { HabitsContext } from "../../providers/IndividualsHabits";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/Button";
+import { useGoals } from "../../providers/Goals";
+import { useGroups } from "../../providers/Groups";
+import DashboardGroupCard from "../../components/DashboardGroupCard";
+import ModalGroup from "../../components/ModalGroup";
 
 const Dashboaord = () => {
-  // const [createHabitsOpen, setCreateHabitsOpen] = useState(true);
-  const [isModalGoalOpen, setIsModalGoalOpen] = useState(true);
-
+  //habitos
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
-  const { habits, getHabits } = useContext(HabitsContext);
+  const { habits, inputText, setInputText, habitsSearch, getHabits } =
+    useContext(HabitsContext);
+  //grupos
+  const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
+  const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
+  const { myGroups, userGroupsList } = useGroups();
+  const {
+    setCreateActivitiesOpen,
+    createActivitiesOpen,
+    setIsNotCreatedGroup,
+  } = useGroups();
 
-  useEffect(() => getHabits(), []);
+  useEffect(() => {
+    getHabits();
+    myGroups();
+  }, []);
+
+  const pesquisa = (data, input) => {};
 
   return (
     <Container>
@@ -32,8 +49,14 @@ const Dashboaord = () => {
               </Button>
             </div>
             <div className="search">
-              <input type="text" placeholder="Pesquisar habito" />
-              <Button>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setInputText(e.target.value);
+                }}
+                placeholder="Pesquisar habito"
+              />
+              <Button onClick={() => habitsSearch(inputText)}>
                 <SearchIcon></SearchIcon>
               </Button>
             </div>
@@ -48,8 +71,13 @@ const Dashboaord = () => {
         <SmallContainerRight>
           <header>
             <div className="header">
-              <h2>Meus Grupos</h2>
-              <Button onClick={() => setCreateHabitsOpen(true)}>
+              <h2>Meus grupos</h2>
+              <Button
+                onClick={() => {
+                  setIsNotCreatedGroup(false);
+                  setIsModalGroupOpen(true);
+                }}
+              >
                 <AddIcon></AddIcon>
               </Button>
             </div>
@@ -60,10 +88,25 @@ const Dashboaord = () => {
               </Button>
             </div>
           </header>
+          {userGroupsList.map((group, index) => {
+            return (
+              <DashboardGroupCard
+                id={group.id}
+                isOpen={setIsModalGroupOpen}
+                key={index}
+                group={group}
+                index={index}
+              ></DashboardGroupCard>
+            );
+          })}
         </SmallContainerRight>
       </div>
       <MobileFooter isDashboard name="habits"></MobileFooter>
       <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
+      <ModalGroup
+        setIsOpen={setIsModalGroupOpen}
+        isOpen={isModalGroupOpen}
+      ></ModalGroup>
 
       {/* <ModalGoals
         setIsOpen={setIsModalGoalOpen}
