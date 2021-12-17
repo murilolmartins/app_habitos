@@ -30,7 +30,7 @@ export const Container = styled.div`
     margin-bottom:10px;
     :hover{
       cursor:pointer;
-      outline:1px solid white;
+      outline:2px solid white;
     }
    @media(max-width:768px) {
      font-size:0.7rem;

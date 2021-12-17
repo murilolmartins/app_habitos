@@ -16,11 +16,7 @@ const GroupsProvider = ({ children }) => {
   const [createActivitiesOpen, setCreateActivitiesOpen] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
   const [list, setList] = useState([]);
-
-  useEffect(() => {
-    myGroups();
-  }, []);
-
+  
   const myGroups = () => {
     api
       .get(`/groups/subscriptions/`, {
@@ -32,6 +28,10 @@ const GroupsProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    myGroups();
+  }, []);
+
 
   const createGroup = (data) => {
     api

@@ -20,7 +20,10 @@ const Container = styled.div`
   width: 100%;
   color: white;
   margin-bottom: 10px;
-
+  :hover{
+    cursor:pointer;
+    outline:2px solid white;
+  }
   header {
     display: flex;
     justify-content: space-around;

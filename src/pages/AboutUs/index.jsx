@@ -9,10 +9,11 @@ import StaffCard from "../../components/StaffCard";
 import { Container, Content } from "./style";
 
 const AboutUs = () => {
+  
   const staff = [
     {
-      name: "About Us",
-      job: "We are a team from Kenzie Academy, and together with focus and hard work we build amazing things, like this app, if you want to know more about the team members click in the cards!",
+      name: "Sobre nós",
+      job: "Nós somos uma equipe da Kenzie Academy Brasil, e juntos com foco e muito trabalho construimos coisas incriveis como este app, se você quer saber mais sobre nosso time clique nos cards!",
       img: "",
       link: "https://kenzie.com.br/",
     },
