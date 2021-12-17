@@ -33,11 +33,10 @@ const ModalUser = () => {
         </header>
         <div className="userData">
           <h2>
-            Usuario:
-            <br /> {user.username}
+            Usuario:<span>{user.username}</span>
           </h2>
           <h2>
-            Email :<br /> {user.email}
+            Email :<span>{user.email}</span>
           </h2>
         </div>
         <form onSubmit={handleSubmit(editProfile)}>
