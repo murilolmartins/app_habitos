@@ -16,7 +16,6 @@ export const ActivitiesProvider = ({ children }) => {
   //   });
 
   const createActivity = (data) => {
-    console.log(data);
     const newData = { ...data, group: groupId };
     api
       .post("/activities/", newData, {

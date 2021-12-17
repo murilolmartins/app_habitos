@@ -16,6 +16,12 @@ export const Container = styled.div`
     flex-wrap: wrap;
     width: inherit;
     height: 85%;
+
+    /* @media (max-width: 800px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    } */
   }
 `;
 
@@ -48,7 +54,9 @@ export const SmallContainer = styled.div`
     border-radius: 10px;
     border: none;
   }
-
+  @media (max-width: 800px) {
+    height: 35%;
+  }
   .header {
     display: flex;
     align-items: center;

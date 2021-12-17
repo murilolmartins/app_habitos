@@ -35,7 +35,9 @@ export const Container = styled.div`
       padding-left: 30px;
     }
   }
-
+  header:hover {
+    cursor: pointer;
+  }
   section {
     width: inherit;
     border: 2px solid #67167b;

@@ -30,10 +30,15 @@ const Groups = () => {
     setList,
   } = useGroups();
 
-  const searchList = (e) => {
-    let newList = userGroupsList.filter((item) => item.name.includes(e));
-    newList.length === 0 ? setList([]) : setList(newList);
-  };
+  // const searchList = (e) => {
+  //   let newList = userGroupsList.filter((item) => item.name.includes(e));
+  //   newList.length === 0 ? setList([]) : setList(newList);
+  // };
+
+  useEffect(() => {
+    myGroups();
+  }, []);
+
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
@@ -61,9 +66,9 @@ const Groups = () => {
             <input
               type="text"
               placeholder="Pesquisar grupo"
-              onChange={(e) => {
-                searchList(e.target.value);
-              }}
+              // onChange={(e) => {
+              //   searchList(e.target.value);
+              // }}
             />
           </div>
         </header>

@@ -32,7 +32,7 @@ const DashboardHabitsCard = ({ habit, setModalHabitsOpen }) => {
             Categoria: <span>{habit.category}</span>
           </p>
         </div>
-        <div className="buttons">
+        {/* <div className="buttons">
           <Checkbox color="success" size="large" />
           <span className="deleteIcon">
             <DeleteForeverIcon
@@ -42,7 +42,7 @@ const DashboardHabitsCard = ({ habit, setModalHabitsOpen }) => {
               }}
             ></DeleteForeverIcon>
           </span>
-        </div>
+        </div> */}
       </section>
     </Container>
   );

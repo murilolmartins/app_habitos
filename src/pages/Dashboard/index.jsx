@@ -22,7 +22,7 @@ const Dashboaord = () => {
   //grupos
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
-  const { myGroups, userGroupsList } = useGroups();
+  const { myGroups, list, setList } = useGroups();
   const {
     setCreateActivitiesOpen,
     createActivitiesOpen,
@@ -34,7 +34,18 @@ const Dashboaord = () => {
     myGroups();
   }, []);
 
-  const pesquisa = (data, input) => {};
+  const [inputGroup, setInputGroup] = useState("");
+  const groupsSearch = (inputGroup) => {
+    if (inputGroup === "") {
+      myGroups();
+    } else {
+      const insensitiveCase = new RegExp(inputGroup, "i");
+      const filteredGroups = list.filter((group) =>
+        insensitiveCase.test(group.title || group.category)
+      );
+      setList(filteredGroups);
+    }
+  };
 
   return (
     <Container>
@@ -48,7 +59,7 @@ const Dashboaord = () => {
                 <AddIcon></AddIcon>
               </Button>
             </div>
-            <div className="search">
+            {/* <div className="search">
               <input
                 type="text"
                 onChange={(e) => {
@@ -59,7 +70,7 @@ const Dashboaord = () => {
               <Button onClick={() => habitsSearch(inputText)}>
                 <SearchIcon></SearchIcon>
               </Button>
-            </div>
+            </div> */}
           </header>
           {habits.map((habit, index) => (
             <DashboardHabitsCard
@@ -81,14 +92,20 @@ const Dashboaord = () => {
                 <AddIcon></AddIcon>
               </Button>
             </div>
-            <div className="search">
-              <input type="text" placeholder="Pesquisar grupo" />
-              <Button>
+            {/* <div className="search">
+              <input
+                type="text"
+                onChange={(e) => {
+                  setInputGroup(e.target.value);
+                }}
+                placeholder="Pesquisar grupo"
+              />
+              <Button onClick={() => groupsSearch(inputGroup)}>
                 <SearchIcon></SearchIcon>
               </Button>
-            </div>
+            </div> */}
           </header>
-          {userGroupsList.map((group, index) => {
+          {list.map((group, index) => {
             return (
               <DashboardGroupCard
                 id={group.id}
@@ -101,7 +118,7 @@ const Dashboaord = () => {
           })}
         </SmallContainerRight>
       </div>
-      <MobileFooter isDashboard name="habits"></MobileFooter>
+      <MobileFooter isDashboard name="dashboard"></MobileFooter>
       <CreateHabits setIsOpen={setCreateHabitsOpen} isOpen={createHabitsOpen} />
       <ModalGroup
         setIsOpen={setIsModalGroupOpen}
