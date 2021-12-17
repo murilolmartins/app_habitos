@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
       .then((response) => {
         localStorage.setItem("@AppToken", JSON.stringify(response.data.access));
         setToken(JSON.parse(localStorage.getItem("@AppToken")));
-        toast.success("Bem Vind@!");
+        toast.success("Bem Vindo(a)!");
         history.push("/habits");
       })
       .catch((err) => {

@@ -5,9 +5,9 @@ const Wellcome = () => {
     <Container>
       <h1>BEM-VINDO(A)!</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-        quisquam iure nulla consectetur eius ea culpa at ipsa dolores quod unde
-        ullam aperiam fuga animi aspernatur, tempore quo deleniti alias.
+        Este é um App para ajudar a tornar o seu dia um pouco melhor e fácil.
+        Nós fornecemos para você ferramentas para tornar sua agenda mais clara, 
+        e sobrar tempo para você pensar sobre UKIFAZER !
       </p>
     </Container>
   );

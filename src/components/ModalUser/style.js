@@ -6,6 +6,10 @@ export const Container = styled.div`
       margin: 0px 0px 20px 0px;
       font-size: 20px;
       text-align: center;
+      span{
+        margin-left:10px;
+        color:#eecf5f;
+      }
     }
   }
   header {
