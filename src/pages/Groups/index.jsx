@@ -18,6 +18,7 @@ const Groups = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const [isSearchGroupsOpen, setIsSearchGroupsOpen] = useState(false);
+  const [myGroupsSearch, setMyGroupsSearch] = useState("");
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
   const { userGroupsList } = useGroups();
   const [list, setList] = useState([...userGroupsList]);
@@ -58,9 +59,12 @@ const Groups = () => {
               type="text"
               placeholder="Pesquisar grupo"
               onChange={(e) => {
-                searchList(e.target.value);
+                setMyGroupsSearch(e.target.value);
               }}
             />
+            <Button onClick={() => searchList(myGroupsSearch.toLowerCase())}>
+              Buscar
+            </Button>
           </div>
         </header>
         {list.map((group, index) => {

@@ -2,19 +2,39 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   header {
-    display:flex;
-    flex-direction:row;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
-  form p {
-    color: red;
-    font-size: 15px;
+  div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
-  form Input {
-    width:280px;
-    padding-left:15px;
-    padding-right:15px;
+  input {
+    width: 300px;
+    height: 33px;
+    border: 2px transparent orange;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  li {
+    margin: 3px;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    button {
+      width: 100px;
+    }
   }
 `;
