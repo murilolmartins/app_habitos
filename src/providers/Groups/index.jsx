@@ -16,6 +16,7 @@ const GroupsProvider = ({ children }) => {
   const [createActivitiesOpen, setCreateActivitiesOpen] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
   const myGroups = () => {
+    console.log("Warning");
     api
       .get(`/groups/subscriptions/`, {
         headers: { Authorization: `Bearer ${token}` },

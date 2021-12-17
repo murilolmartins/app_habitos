@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DesktopHeader from "../../components/DesktopHeader";
 import MobileFooter from "../../components/MobileFooter";
 import ModalGroup from "../../components/ModalGroup";
@@ -11,7 +11,6 @@ import ModalUser from "./../../components/ModalUser";
 import GroupCard from "./../../components/GroupsCard/index";
 import { useGroups } from "./../../providers/Groups/index";
 import { useGoals } from "./../../providers/Goals/index";
-import { useActivities } from "./../../providers/Activities";
 import ModalSearchGroups from "../../components/ModalSearchGroups";
 import CreateActivities from "./../../components/CreateActivities/index";
 const Groups = () => {
@@ -20,17 +19,25 @@ const Groups = () => {
   const [isSearchGroupsOpen, setIsSearchGroupsOpen] = useState(false);
   const [myGroupsSearch, setMyGroupsSearch] = useState("");
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
-  const { userGroupsList } = useGroups();
-  const [list, setList] = useState([...userGroupsList]);
   const {
     setCreateActivitiesOpen,
     createActivitiesOpen,
     setIsNotCreatedGroup,
+    userGroupsList,
+    myGroups,
   } = useGroups();
+  const [list, setList] = useState(userGroupsList);
+
   const searchList = (e) => {
+    console.log(userGroupsList);
     let newList = userGroupsList.filter((item) => item.name.includes(e));
     newList.length === 0 ? setList([]) : setList(newList);
   };
+
+  useEffect(() => {
+    myGroups();
+  }, [list]);
+
   return (
     <Container>
       <DesktopHeader isDashBoard></DesktopHeader>
