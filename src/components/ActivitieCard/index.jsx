@@ -1,9 +1,8 @@
-import { Checkbox } from "@mui/material";
+
 import {Container} from  './styles';
 import EditIcon from "@mui/icons-material/Edit";
-import {useActivities} from './../../providers/Activities';
 import {useGroups} from './../../providers/Groups';
-import {useEffect,useState} from 'react'
+import {useEffect} from 'react'
 const ActivitieCard = ({activitie})=>{
   const {id} = activitie;
   const {setCreateActivitiesOpen,setIsNotCreatedActivitie,setActId} =useGroups();

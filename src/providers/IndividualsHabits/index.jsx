@@ -15,7 +15,7 @@ const HabitsProvider = ({ children }) => {
 
   const [habitsInfo, setHabitsInfo] = useState([]);
   const [habitId, setHabitId] = useState(0);
-
+  const [checkedHabit,setCheckedHabit] = useState(true);
   const [inputText, setInputText] = useState("");
   const [habits, setHabits] = useState([]);
 
@@ -72,7 +72,7 @@ const HabitsProvider = ({ children }) => {
       )
 
       .then((res) => {
-        toast.success("Hábito concluído!");
+        toast.success(checkedHabit?"Hábito concluído!":"Hábito não concluido");
         getHabits();
       })
       .catch((err) => {
@@ -123,6 +123,11 @@ const HabitsProvider = ({ children }) => {
         inputText,
         setInputText,
         habitsSearch,
+
+        getHabits,
+        setCheckedHabit,
+        checkedHabit
+
       }}
     >
       {children}

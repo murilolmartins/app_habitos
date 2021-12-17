@@ -18,6 +18,7 @@ const Groups = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const [isSearchGroupsOpen, setIsSearchGroupsOpen] = useState(false);
+  const [myGroupsSearch, setMyGroupsSearch] = useState("");
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
   const {
     userGroupsList,
@@ -30,6 +31,7 @@ const Groups = () => {
     setList,
   } = useGroups();
 
+
   // const searchList = (e) => {
   //   let newList = userGroupsList.filter((item) => item.name.includes(e));
   //   newList.length === 0 ? setList([]) : setList(newList);
@@ -38,6 +40,12 @@ const Groups = () => {
   useEffect(() => {
     myGroups();
   }, []);
+
+
+  const searchList = (e) => {
+    // const newList = userGroupsList.filter(e);
+    // setList(newList);
+  };
 
   return (
     <Container>
@@ -66,10 +74,17 @@ const Groups = () => {
             <input
               type="text"
               placeholder="Pesquisar grupo"
+
               // onChange={(e) => {
               //   searchList(e.target.value);
               // }}
+
+              onChange={(e) => {
+                setMyGroupsSearch(e.target.value);
+              }}
+
             />
+            <Button onClick={() => searchList(myGroupsSearch)}>Buscar</Button>
           </div>
         </header>
         {list.map((group, index) => {

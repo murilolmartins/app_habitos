@@ -27,7 +27,12 @@ const DesktopHeader = ({ isDashBoard = false }) => {
             <img src={logo} alt="Logo" />
           </figure>
           <div className="links">
+
             <Link to="/habits">Hábitos</Link>
+
+            <Link to="/aboutUs">Sobre nós</Link>
+            
+
             <Link to="/groups">Grupos</Link>
             <div className="description">
               <h2>{user.username}</h2>
