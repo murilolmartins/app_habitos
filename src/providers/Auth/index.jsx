@@ -19,8 +19,7 @@ const AuthProvider = ({ children }) => {
         setToken(JSON.parse(localStorage.getItem("@AppToken")));
 
         toast.success("Bem Vind@!");
-        history.push("/dashboard"); //alterado para dashboard
-
+        history.push("/dashboard");
       })
       .catch((err) => {
         toast.error("Usuario ou senha incorretos!");

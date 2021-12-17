@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { AuthContext } from "../Auth";
 import api from "./../../services/api";
 import { toast } from "react-toastify";
@@ -26,9 +26,6 @@ const GroupsProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    myGroups();
-  }, []);
 
   const createGroup = (data) => {
     api

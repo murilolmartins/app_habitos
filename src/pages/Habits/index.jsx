@@ -19,7 +19,7 @@ const Habits = () => {
   const { user, setUserModalOpen } = useContext(UserContext);
   useEffect(() => {
     getHabits();
-  }, []);
+  }, [getHabits]);
   //   useEffect(() => {
   //     myFunction();
   //     return () => {

@@ -9,7 +9,6 @@ import StaffCard from "../../components/StaffCard";
 import { Container, Content } from "./style";
 
 const AboutUs = () => {
-  
   const staff = [
     {
       name: "Sobre nós",
@@ -59,7 +58,6 @@ const AboutUs = () => {
             img={staff.img}
             job={staff.job}
             link={staff.link}
-            key={index}
           />
         ))}
       </Content>
