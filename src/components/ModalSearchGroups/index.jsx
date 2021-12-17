@@ -44,7 +44,7 @@ const ModalSearchGroups = ({ isOpen, setIsOpen }) => {
           <input
             placeholder="Nome, descrição e categoria."
             onChange={(e) => setSearch(e.target.value)}
-          />
+          ></input>
           <Button onClick={() => callGroups(search)}>
             <SearchIcon></SearchIcon>
           </Button>

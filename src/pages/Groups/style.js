@@ -16,8 +16,8 @@ export const SmallContainer = styled.div`
   max-width: 1100px;
   flex-grow: 1;
   margin-top: 20px;
-  background:rgba(103, 22, 123, 0.4);
- 
+  background: rgba(103, 22, 123, 0.4);
+
   padding: 20px;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -33,7 +33,7 @@ export const SmallContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background:#67167B;
+      background: #67167b;
     }
   }
   .search {
@@ -47,7 +47,7 @@ export const SmallContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color:#67167B;
+      background-color: #67167b;
     }
     input {
       font-family: "Overpass";
