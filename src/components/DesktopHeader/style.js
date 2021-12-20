@@ -79,6 +79,7 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 460px) {
+    width: 310px;
     figure img {
       width: 250px;
     }

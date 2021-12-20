@@ -18,8 +18,9 @@ export const SmallContainer = styled.div`
   margin-top: 20px;
   background: #ffe2cd;
   padding: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 75px;
   border-radius: 10px;
+  overflow: scroll;
   .header {
     display: flex;
     align-items: center;

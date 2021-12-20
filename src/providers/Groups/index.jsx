@@ -21,10 +21,22 @@ const GroupsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // setUserGroupsList(res.data);
+        setUserGroupsList(res.data);
         setList(res.data);
       })
       .catch((err) => console.log(err));
+  };
+
+  const groupsSearch = (inputText) => {
+    if (inputText === "") {
+      myGroups();
+    } else {
+      const insensitiveCase = new RegExp(inputText, "i");
+      const filteredHabits = list.filter((group) =>
+        insensitiveCase.test(group.name || group.category)
+      );
+      setList(filteredHabits);
+    }
   };
 
   const createGroup = (data) => {
@@ -54,7 +66,7 @@ const GroupsProvider = ({ children }) => {
   };
   const subscribeOnGroup = (id) => {
     api
-      .post(`/groups/${id}/subscribe/`, {
+      .post(`/groups/${id}/subscribe/`, "", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -98,6 +110,7 @@ const GroupsProvider = ({ children }) => {
         setUserGroupsList,
         list,
         setList,
+        groupsSearch,
       }}
     >
       {children}

@@ -17,7 +17,7 @@ const Groups = () => {
   const [createHabitsOpen, setCreateHabitsOpen] = useState(false);
   const [isModalGroupOpen, setIsModalGroupOpen] = useState(false);
   const [isSearchGroupsOpen, setIsSearchGroupsOpen] = useState(false);
-  const [myGroupsSearch, setMyGroupsSearch] = useState("");
+  // const [myGroupsSearch, setMyGroupsSearch] = useState("");
   const { isModalGoalOpen, setIsModalGoalOpen } = useGoals();
   const {
     setCreateActivitiesOpen,
@@ -25,21 +25,22 @@ const Groups = () => {
     setIsNotCreatedGroup,
     myGroups,
     list,
+    setList,
+    userGroupsList,
   } = useGroups();
-
-  // const searchList = (e) => {
-  //   let newList = userGroupsList.filter((item) => item.name.includes(e));
-  //   newList.length === 0 ? setList([]) : setList(newList);
-  // };
 
   useEffect(() => {
     myGroups();
   });
 
-  const searchList = (e) => {
-    // const newList = userGroupsList.filter(e);
-    // setList(newList);
-  };
+  // const searchList = (e) => {
+  //   let newList = userGroupsList.filter((item) => item.name.startsWith(e));
+  //   newList.length === 0 ? setList([]) : setList(newList);
+  // };
+  // const searchList = (e) => {
+  //   const newList = userGroupsList.filter((item) => item.name === e);
+  //   setList(newList);
+  // };
 
   return (
     <Container>
@@ -64,7 +65,7 @@ const Groups = () => {
               <SearchIcon></SearchIcon>
             </Button>
           </div>
-          <div className="search">
+          {/* <div className="search">
             <input
               type="text"
               placeholder="Pesquisar grupo"
@@ -76,8 +77,10 @@ const Groups = () => {
                 setMyGroupsSearch(e.target.value);
               }}
             />
-            <Button onClick={() => searchList(myGroupsSearch)}>Buscar</Button>
-          </div>
+            <Button onClick={() => searchList(myGroupsSearch)} type="button">
+              Buscar
+            </Button>
+          </div> */}
         </header>
         {list.map((group, index) => {
           return (

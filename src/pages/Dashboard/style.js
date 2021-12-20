@@ -16,6 +16,8 @@ export const Container = styled.div`
     flex-wrap: wrap;
     width: inherit;
     height: 85%;
+    overflow-y: scroll;
+    margin-bottom: 57px;
 
     /* @media (max-width: 800px) {
       flex-direction: column;
